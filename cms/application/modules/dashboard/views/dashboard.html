@@ -81,7 +81,7 @@
 									<h6 class="media-heading"><a href='{site_url("post/edit-post/`$p->id`")}'>{$p->title}</a></h6>
 					        		<ul class="list-inline list-inline-separate text-muted mb-5">
 					        			<li><i class="icon-book-play position-left"></i> {$p->category}</li>
-					        			<li>{time_elapsed_string($p->created)}</li>
+					        			<li>{time_elapsed($p->created)}</li>
 					        		</ul>
 									{limit_to_numwords($p->intro, 10)} ...
 								</div>
@@ -108,7 +108,7 @@
 									<h6 class="media-heading"><a href='{site_url("post/edit-post/`$p->id`")}'>{$p->title}</a></h6>
 					        		<ul class="list-inline list-inline-separate text-muted mb-5">
 					        			<li><i class="icon-book-play position-left"></i> {$p->category}</li>
-					        			<li>{time_elapsed_string($p->created)}</li>
+					        			<li>{time_elapsed($p->created)}</li>
 					        		</ul>
 									{limit_to_numwords($p->intro, 10)} ...
 								</div>
@@ -202,7 +202,7 @@
 						<div class="media-body">
 							<a href="#">
 								{$a->name}
-								<span class="media-annotation pull-right">{time_elapsed_string($a->created)}</span>
+								<span class="media-annotation pull-right">{time_elapsed($a->created)}</span>
 							</a>
 
 							<span class="display-block text-muted">{$a->subject}</span>
