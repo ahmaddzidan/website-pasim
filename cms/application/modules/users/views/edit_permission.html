@@ -1,0 +1,78 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/users.js"></script>
+{/block}
+
+{block name=page_navigations}
+{anchor("users/create_user", "<b><i class='icon-user'></i></b>"|cat:lang('create_user_submit_btn'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{anchor("users/create_group", "<b><i class='icon-users'></i></b>"|cat:lang('create_group_submit_btn'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{/block}
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('general_permission_edit')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+		{lang('general_permission_edit_subheading')}
+	</div>
+	{form_open(uri_string(),'class="form-horizontal"')}
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>{lang('general_module_name')}</th>
+					<th>{lang('general_module_desc')}</th>
+					<th>Add</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" class="styled"></td>
+					<td>Users</td>
+					<td>Module for user management</td>
+					<td><input type="checkbox" class="styled"></td>
+					<td><input type="checkbox" class="styled"></td>
+					<td><input type="checkbox" class="styled"></td>
+					<td><input type="checkbox" class="styled"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" class="styled"></td>
+					<td>Migrate</td>
+					<td>Module for Database Migration</td>
+					<td><input type="checkbox" class="styled"></td>
+					<td><input type="checkbox" class="styled"></td>
+					<td><input type="checkbox" class="styled"></td>
+					<td><input type="checkbox" class="styled"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="7" class="text-right">
+						<a href="javascript:history.back()" class="btn bg-teal">{lang('general_back')}</a>
+						{form_submit('submit', lang('general_permission_edit_submit'),'class="btn btn-primary"')}
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	{form_close()}
+</div>
+<!-- /table -->
+{/block}

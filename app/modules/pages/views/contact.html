@@ -1,0 +1,101 @@
+{* Extend our master template *}
+{extends file="layout.html"}
+{block name=meta}
+	<meta name="keywords" content="{$websetting->metakeyword} {$page->title}">
+	<meta name="title" property="og:title" content="{$websetting->title} {$page->title}"/>
+	<meta name="description" property="og:description" content="{$websetting->description}">
+	<meta name="image" property="og:image" content="{$file_path}setting/{$websetting->headerlogo}" />
+	<meta name="dc.title" content="{$websetting->title}" />
+	<meta name="twitter:title" value="{$websetting->title}"/>
+	<meta name="twitter:description" value="{$websetting->description}" />
+	<meta name="twitter:image" value="{$file_path}setting/{$websetting->headerlogo}" />
+{/block}
+{block name=page_content}
+
+<!-- page content -->
+	<div id="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-8">
+							<!-- breadcrumb -->
+							<ol class="breadcrumb">
+							  <li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+							  <li class="active">{$page->title}</li>
+							</ol>
+							<!-- /.breadcrumb -->
+							<!-- page description -->
+							<div class="page-description">
+								{$page->body}
+								<div class="clearfix"></div>
+								{form_open(uri_string(), 'class="form-horizontal" role="form"')}
+									<div class="form-group">
+										<legend>Isi Form di bawah ini</legend>
+										{$message}
+									</div>
+
+									<div class="form-group">
+									    <label for="inputNama" class="col-sm-2 control-label">Nama</label>
+									    <div class="col-sm-10">
+									      {form_input($name)}
+									    </div>
+									</div>
+									<div class="form-group">
+								    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+								    <div class="col-sm-10">
+									       {form_input($email)}
+									    </div>
+									</div>
+
+									<div class="form-group">
+								    <label for="inputSubject" class="col-sm-2 control-label">Subjek</label>
+								    <div class="col-sm-10">
+									       {form_input($subject)}
+									    </div>
+									</div>
+
+									<div class="form-group">
+								    <label for="inputSubject" class="col-sm-2 control-label">No. Handphone</label>
+								    <div class="col-sm-10">
+									       {form_input($mobile)}
+									    </div>
+									</div>
+
+									<div class="form-group">
+									    <label for="inputPesan" class="col-sm-2 control-label">Pesan :</label>
+									    <div class="col-sm-10">
+									     {form_textarea($body)}
+									    </div>
+									</div>
+
+									<div class="form-group">
+									    <label for="inputPesan" class="col-sm-2 control-label">Captcha</label>
+									    <div class="col-sm-7">
+									    	{form_input($captcha)}
+									    </div>
+									    <div class="col-sm-3">
+									    	{$captcha_val.image}
+									    </div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-10 col-sm-offset-2">
+										{form_submit('submit', 'Kirim Pesan','class="btn btn-primary"')}
+										</div>
+									</div>
+								{form_close()}
+							</div>
+						<!-- /.page description -->
+						</div>
+						<div class="col-md-4">
+							{include file="sidebar.html"}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page content -->
+	{/block}

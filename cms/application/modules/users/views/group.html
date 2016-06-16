@@ -1,0 +1,56 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/users.js"></script>
+{/block}
+
+{block name=page_navigations}
+{anchor("users/create_user", "<b><i class='icon-user'></i></b>"|cat:lang('create_user_submit_btn'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{anchor("users/create_group", "<b><i class='icon-users'></i></b>"|cat:lang('create_group_submit_btn'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{/block}
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('group_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+		{lang('group_subheading')}
+	</div>
+
+	<!-- <div class="table-responsive"> -->
+		<table class="table datatable-basic" id="group-list">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>{lang('group_name_th')}</th>
+					<th>{lang('group_description_th')}</th>
+					<th>{lang('group_action_th')}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{foreach $groups as $i}
+				<tr>
+					<td>{$i->id}</td>
+					<td>{htmlspecialchars($i->name)}</td>
+					<td>{htmlspecialchars($i->description)}</td>
+					<td>{anchor("users/edit_group/`$i->id`",'<b><i class="icon-pencil"></i></b> Edit','class="btn btn-info btn-labeled btn-xs"')}</td>
+				</tr>
+			{/foreach}
+			</tbody>
+		</table>
+	<!-- </div> -->
+</div>
+<!-- /table -->
+{/block}

@@ -1,0 +1,270 @@
+{* Extend our master template *}
+{extends file="layout.html"}
+
+{block name=meta}
+	<meta name="keywords" content="{$websetting->metakeyword}">
+	<meta name="title" property="og:title" content="{$websetting->title}"/>
+	<meta name="description" property="og:description" content="{$websetting->description}">
+	<meta name="image" property="og:image" content="{$file_path}setting/{$websetting->headerlogo}" />
+	<meta name="dc.title" content="{$websetting->title}" />
+	<meta name="twitter:title" value="{$websetting->title}"/>
+	<meta name="twitter:description" value="{$websetting->description}" />
+	<meta name="twitter:image" value="{$file_path}setting/{$websetting->headerlogo}" />
+{/block}
+
+{block name=page_content}
+<!-- #slider -->
+	<div id="slider">
+	<!-- owl slider -->
+	    <div id="main-slider" class="owl-carousel owl-theme">
+	    {foreach from=$slider item=s key=id}
+	      <div class="item">
+	      	<img src="{$file_path}slider/{$s->images}" class="img-responsive" alt="{$s->title}">
+	      	<div class="slider-caption">
+	      	<div class="container">
+	      		<h1>{$s->title}</h1>
+	      		<span>{$s->caption}</span>
+	      	</div>
+	      	</div>
+	      </div>
+	    {/foreach}
+	    </div>
+	<!-- /.owl slider -->
+
+	<!-- slider navigation -->
+		<div class="slider-navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<ul>
+						<li><a href="{site_url('pendaftaran-online')}"><span><i class="fa fa-graduation-cap"></i></span><h4>Pendaftaran Online</h4><p>Pendaftaran secara online</p></a></li>
+						<li><a href="#"><span><i class="fa fa-cloud-download"></i></span><h4>Dowload Formulir</h4><p>Download formulir disini</p></a></li>
+						<li><a href="#"><span><i class="fa fa-paper-plane"></i></span><h4>Download Browsure</h4><p>Donwload informasi pendaftaran</p></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+	<!-- /.slider navigation -->
+	</div>
+	<!-- /#slider -->
+
+	<!-- #main-banner -->
+	<div id="main-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="banner-1">
+					<!-- <a href="#">
+						<img src="{theme_url()}images/banner.jpg" class="img-responsive" alt="banner pasim">
+					</a> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+	<!-- /#main-banner -->
+
+	<!-- main content -->
+	<div class="main-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+				<!-- welcome message -->
+					<div class="welcome-message">
+						{$page->body}
+						<a href="{site_url('public/profil')}" class="link">- Selengkapnya</a>
+					</div>
+
+				<!-- /.welcome message -->
+				<!-- Berita dan kegiatan -->
+					<div class="panel panel-primary content-item">
+						<div class="panel-heading">
+							<h3 class="panel-title">Berita & Kegiatan</h3>
+						</div>
+						<div class="panel-body">
+						<div class="content-list">
+						{foreach from=$recent.berita key=id item=p}
+						{if $id eq 0}
+						<div class="headline">
+							<img src="{$file_path}/post/{$p->images}" class="img-thumbnail img-responsive pull-right" alt="" width="300px">
+							<h4 class="title">{anchor("/post/read/`$p->id`/`$p->slug`", $p->title)}</h4>
+							<span class="date">{cmsdate($p->created, 2)}</span>
+							<p>{$p->intro}</p>
+							{anchor("/post/read/`$p->id`/`$p->slug`", "- Selengkapnya","class='link'")}
+						</div>
+						<hr>
+						{else}
+
+							<div class="media">
+								<div class="media-left hidden-xs">
+									<a href='{site_url("/post/read/`$p->id`/`$p->slug`")}'><img width="125" height="94" alt="64x64" class="media-object img-thumbnail" src="{$file_path}/post/{$p->images}"></a>
+								</div>
+								<div class="media-body">
+									<h5 class="media-heading">{anchor("/post/read/`$p->id`/`$p->slug`", $p->title)}</h5>
+									<span><time datetime="{fdate('Y-m-d',$p->created)}">{cmsdate($p->created, 2)}</time></span>
+									<p>{$p->intro} {anchor("/post/read/`$p->id`/`$p->slug`", "- Selengkapnya","class='link'")}</p>
+								</div>
+							</div>
+						{/if}
+						{/foreach}
+						</div>
+
+						</div>
+					</div>
+					<!-- /.Berita dan kegiatan -->
+
+					<!-- Informasi kampus -->
+					<div class="panel panel-primary content-item">
+						<div class="panel-heading">
+							<h3 class="panel-title text-right">Informasi Kampus</h3>
+						</div>
+						<div class="panel-body">
+							{foreach from=$recent.informasi key=id item=i}
+							{if $id eq 0}
+								<div class="content-list">
+								<div class="headline">
+									<img src="{$file_path}/post/{$i->images}" class="img-thumbnail img-responsive pull-right" alt="" >
+									<h4 class="title"><a href="informasi-detail.html">{anchor("/post/read/`$i->id`/`$i->slug`", $i->title)}</a></h4>
+									<span class="date">{cmsdate($i->created, 2)} </span>
+									<p>{$i->intro}</p>
+									{anchor("/post/read/`$i->id`/`$i->slug`", "- Selengkapnya","class='link'")}
+								</div>
+								<hr>
+							{else}
+								<div class="media">
+									<div class="media-left hidden-xs">
+										<a href='{site_url("/post/read/`$i->id`/`$i->slug`")}'><img width="125" height="94" alt="64x64" class="media-object img-thumbnail" src="{$file_path}/post/{$i->images}"></a>
+									</div>
+									<div class="media-body">
+										<h5 class="media-heading">{anchor("/post/read/`$i->id`/`$i->slug`", $i->title)}</h5>
+										<span><time datetime="{fdate('Y-m-d',$i->created)}">{cmsdate($i->created, 2)} </time></span>
+										<p>{$i->intro} {anchor("/post/read/`$i->id`/`$i->slug`", "- Selengkapnya","class='link'")}</p>
+									</div>
+								</div>
+							{/if}
+							{/foreach}
+						</div>
+						</div>
+					</div>
+
+					<!-- /.Informasi kampus -->
+
+				</div>
+				<div class="col-md-4">
+					<aside>
+
+					<!-- #nav-sidebar -->
+						<ul class="clearfix" id="nav-sidebar">
+					        <li>
+					            <a class="clearfix" href="#">
+					                <figure><img alt="Contact Us" src="{theme_url()}images/icon-sidebar-1.png"></figure>
+					                <span class="title-nav-sidebar">Hubungi Kami</span>
+					                <strong>Phone:</strong> +62 384856, +62 5456789 <strong>Fax:</strong> +62 45677896
+					            </a>
+					        </li>
+					        <li>
+					            <a class="clearfix" href="lokasi.html">
+					                <figure><img alt="Location" src="{theme_url()}images/icon-sidebar-2.png"></figure>
+					                <span class="title-nav-sidebar">Lokasi</span> Klik di sini untuk mendapatkan arah ke lokasi kampus kami dengan bus atau mobil.
+					            </a>
+					        </li>
+					        <li>
+					            <a class="clearfix" href="#">
+					                <figure><img alt="Location" src="{theme_url()}images/icon-sidebar-3.png"></figure>
+					                <span class="title-nav-sidebar">Live Chat</span> Berbicara dengan Customer Service kami atau mahasiswa dan alumni
+					            </a>
+					        </li>
+					        <li>
+					            <a class="clearfix" href="#">
+					                <figure><img alt="Library and Research" src="{theme_url()}images/icon-sidebar-4.png"></figure>
+					                <span class="title-nav-sidebar">Perpustakaan</span> Tersedia Perpustakaan buku, dari buku sastra sampai buku sejarah.
+					            </a>
+					        </li>
+					        <li>
+					            <a class="clearfix" href="#">
+					                <figure><img alt="Library and Research" src="{theme_url()}images/icon-sidebar-5.png"></figure>
+					                <span class="title-nav-sidebar">Departemen Fakultas</span> Dari Ekonomi, Psikologi, Sastra and Ilmu Komputer.
+					            </a>
+					        </li>
+					    </ul>
+					<!-- #nav-sidebar -->
+
+					<!-- .Galeri foto -->
+						<div class="col-md-12 col-sm-6">
+						<div class="panel panel-primary content-item">
+							<div class="panel-heading">
+								<h3 class="panel-title">Galeri Foto <i class="fa fa-plus pull-right"></i></h3>
+							</div>
+							<div class="panel-body p-0">
+							<div class="galeri-box">
+							<div class="ico-foto"><img src="{theme_url()}images/ico_foto.png" alt=""></div>
+								<div id="galeri-foto" class="owl-carousel owl-theme">
+								{foreach from=$gallery item=g key=id}
+								    <div class="item">
+									    <div class="galeri-caption">
+									    	<h4><a href="{$file_path}gallery/{$g->images}" data-trigger="fancybox" title="{$g->title}">{$g->title}</a></h4>
+									    	<span>{cmsdate($g->created, 6)}</span>
+									    </div>
+									    <img src="{$file_path}gallery/{$g->images}" alt="{$g->title}">
+								    </div>
+								{/foreach}
+								</div>
+							</div>
+							</div>
+						</div>
+						</div>
+					<!-- /.Galeri foto -->
+
+					<!-- .pasim tv -->
+						<div class="col-md-12 col-sm-6">
+						<div class="panel panel-primary content-item">
+							<div class="panel-heading">
+								<h3 class="panel-title">Video<i class="fa fa-plus pull-right"></i></h3>
+							</div>
+							<div class="panel-body p-0">
+								<div class="video-box">
+									<div class="ico-video"><img src="{theme_url()}images/ico_video.png" alt=""></div>
+									<div class="item">
+									 		<div class="galeri-caption">
+										    	<h4><a class="video-player fancybox.iframe" href="http://www.youtube.com/embed/0nCPmhiz3XQ?autoplay=1">Profil Universitas Nasional PASIM</a></h4>
+										    	<span>Jumat 18 Maret 2016</span>
+										    </div>
+										<img src="{theme_url()}images/video-1.jpg" alt="PASIM TV" class="img-responsive">
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+					<!-- /.pasim tv -->
+					</aside>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /. main content -->
+
+	<!-- komentar pakar  -->
+	<div class="intro-principal">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+				<article class="static-page" id="intro-principal">
+				    <h3 id="title-principal">Letjen (purn). Ir. H. Azwar Anas, DDR <span style="font-family: 'Raleway';font-weight: 300">- Yayasan Pendidikan Kader Keuangan dan Perbankan</span></h3>
+				    <figure>
+				        <img alt="Letjen (purn). Ir. H. Azwar Anas." src="{theme_url()}images/azwar-anas.png" class="img-responsive">
+				    </figure>
+				    <div id="content-principal">
+				        <p>Kita semua mengetahui bahwa kota Bandung merupakan salah satu kota pendidikan di Indonesia yang menghasilkan banyak orang berprestasi. Hal ini tentu tidak terlepas dari peran serta lembaga pendidikan dalam mendidik dan menghasilkan sumber daya manusia yang berprestasi dan berkwalitas. Dengan di iringi rasa syukur, saya berharap Universitas Nasional PASIM sebagai salah satu Lembaga Pendidikan di kota Bandung akan semakin berkembang dan terus melanjutkan kiprah dan peranannya dalam mencerdaskan kehidupan bangsa.</p>
+				        <p>
+				        	<strong>Ketua Dewan Penyantun YPKKP</strong>
+				        </p>
+				    </div>
+				</article>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.komentar pakar  -->
+{/block}

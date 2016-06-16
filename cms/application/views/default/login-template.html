@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{$title} :: {$subtitle}</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/core.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/components.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/colors.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/loaders/pace.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/loaders/blockui.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/ui/nicescroll.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/ui/drilldown.js"></script>
+	<!-- /core JS files -->
+
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/notifications/pnotify.min.js"></script>
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/core/app.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/page/general.js"></script>
+
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+	<!-- Main navbar -->
+	<div id="hidden-msg" class="hidden">{$message}</div>
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html"><img src="{theme_url()}panel/assets/images/logo_light.png" alt=""></a>
+
+			<ul class="nav navbar-nav pull-right visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-collapse collapse" id="navbar-mobile">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown language-switch">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+						<img src="{theme_url()}panel/assets/images/flags/gb.png" class="position-left" alt="">
+						English
+						<span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a class="deutsch"><img src="{theme_url()}panel/assets/images/flags/de.png" alt=""> Deutsch</a></li>
+						<li><a class="ukrainian"><img src="{theme_url()}panel/assets/images/flags/ua.png" alt=""> Українська</a></li>
+						<li><a class="english"><img src="{theme_url()}panel/assets/images/flags/gb.png" alt=""> English</a></li>
+						<li><a class="espana"><img src="{theme_url()}panel/assets/images/flags/es.png" alt=""> España</a></li>
+						<li><a class="russian"><img src="{theme_url()}panel/assets/images/flags/ru.png" alt=""> Русский</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-display4"></i> <span class="visible-xs-inline-block position-right"> Go to website</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="#">
+						<i class="icon-user-tie"></i> <span class="visible-xs-inline-block position-right"> Contact admin</span>
+					</a>
+				</li>
+
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-cog3"></i>
+						<span class="visible-xs-inline-block position-right"> Options</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+
+	<!-- Page container -->
+	<div class="page-container login-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				{block name=login_form}{/block}
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+
+		<!-- Footer -->
+		<div class="footer text-muted">
+			&copy; 2015. <a href="#"> Environment type : {$environment} </a>, <a href="#" target="_blank">CodeIgniter Version {$ci_version}</a>
+		</div>
+		<!-- /footer -->
+
+	</div>
+	<!-- /page container -->
+</body>
+</html>

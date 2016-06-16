@@ -1,0 +1,40 @@
+<div id="sidebar">
+	<div class="panel panel-primary content-item">
+		<div class="panel-heading">
+			<h3 class="panel-title">Quick Navigation</h3>
+		</div>
+		<div class="panel-body">
+			<ul class="quick-navigation">
+				<li><a href="{site_url('fakultas')}">Fakultas</a></li>
+				<li><a href="{site_url('kalender-akademik')}">Akademik</a></li>
+				<li><a href="{site_url('program-beasiswa')}">Program Beasiswa</a></li>
+				<li><a href="{site_url('foto-galeri')}">Galeri Foto</a></li>
+				<li><a href="{site_url('berita')}">Berita</a></li>
+				<li><a href="{site_url('informasi')}">Informasi</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="panel panel-primary content-item">
+		<div class="panel-heading">
+			<h3 class="panel-title">Tentang Kami</h3>
+		</div>
+		<div class="panel-body">
+			<figure>
+				<img src="{theme_url()}images/kampus-pasim.jpg" class="img-responsive img-thumbnail mb-15" alt="">
+			</figure>
+			<div>
+				{$websetting->description}
+			</div>
+
+			<ul class="list-address">
+                <li><strong>Alamat  :</strong> {$websetting->address}</li>
+                <li><strong>Email	:</strong> <a href="mailto:{$websetting->email}">{$websetting->support_email}</a></li>
+                <li><strong>Telepon :</strong> {$websetting->telephone}</li>
+            </ul>
+
+           <!--  <iframe class="map-area" src="http://maps.google.com/?ie=UTF8&amp;ll={$websetting->latitude},{$websetting->longitude}&amp;spn=0.006313, 0.01133&amp;t=m&amp;z={$websetting->radius}&amp;output=embed"></iframe> -->
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+{* Extend our master template *}
+{extends file="layout.html"}
+
+{block name=meta}
+	<meta name="keywords" content="{$websetting->metakeyword},{$page->title}">
+	<meta name="title" property="og:title" content="{$websetting->title} {$page->title}"/>
+	<meta name="description" property="og:description" content="{$websetting->description}">
+	<meta name="image" property="og:image" content="{$file_path}setting/{$websetting->headerlogo}" />
+	<meta name="dc.title" content="{$websetting->title} {$page->title}" />
+	<meta name="twitter:title" value="{$websetting->title}"/>
+	<meta name="twitter:description" value="{$websetting->description}" />
+	<meta name="twitter:image" value="{$file_path}setting/{$websetting->headerlogo}" />
+{/block}
+
+{block name=page_content}
+
+<!-- page content -->
+	<div id="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<!-- breadcrumb -->
+							<ol class="breadcrumb">
+							  <li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+							  <li class="active">{$page->title}</li>
+							</ol>
+							<!-- /.breadcrumb -->
+							<!-- page description -->
+							<div class="page-description">
+								{$page->body}
+
+								<div class="row">
+								{foreach from=$gallery key=id item=g}
+									<div class="col-md-4">
+									<a href="{$file_path}/gallery/{$g->images}" rel="galeri" data-trigger="fancybox">
+										<figure class="thumbnails">
+											<img src="{$file_path}/gallery/{$g->images}" alt="" class="img-responsive img-thumbnail">
+											<figcaption>
+												{$g->title}
+											</figcaption>
+										</figure>
+									</a>
+									</div>
+								{/foreach}
+								</div>
+
+							</div>
+						<!-- /.page description -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page content -->
+	{/block}

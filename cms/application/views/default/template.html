@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{$subtitle} &lsaquo; {$site_setting->title}</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/core.min.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/components.min.css" rel="stylesheet" type="text/css">
+	<link href="{theme_url()}panel/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/loaders/pace.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/loaders/blockui.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/ui/nicescroll.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/ui/drilldown.js"></script>
+	<!-- /core JS files -->
+
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/notifications/bootbox.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/notifications/pnotify.min.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/core/app.js"></script>
+	<script type="text/javascript" src="{theme_url()}panel/assets/js/page/general.js"></script>
+
+	{block name=specific_js}{/block}
+	<!-- /theme JS files -->
+
+</head>
+
+<body class="navbar-top-md-md">
+<div id="hidden-msg" class="hidden">{$message}</div>
+<!-- Fixed navbars wrapper -->
+	<div class="navbar-fixed-top">
+
+		<!-- Main navbar -->
+		<div class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="dashboard"><img src="{theme_url()}panel/assets/images/logo_light.png" alt=""></a>
+
+				<ul class="nav navbar-nav pull-right visible-xs-block">
+					<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+				</ul>
+			</div>
+
+			<div class="navbar-collapse collapse" id="navbar-mobile">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown language-switch">
+						<a class="dropdown-toggle" data-toggle="dropdown">
+							<img src="{theme_url()}panel/assets/images/flags/gb.png" class="position-left" alt="">
+							English
+							<span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu">
+							<li><a class="deutsch"><img src="{theme_url()}panel/assets/images/flags/de.png" alt=""> Deutsch</a></li>
+							<li><a class="ukrainian"><img src="{theme_url()}panel/assets/images/flags/ua.png" alt=""> Українська</a></li>
+							<li><a class="english"><img src="{theme_url()}panel/assets/images/flags/gb.png" alt=""> English</a></li>
+							<li><a class="espana"><img src="{theme_url()}panel/assets/images/flags/es.png" alt=""> España</a></li>
+							<li><a class="russian"><img src="{theme_url()}panel/assets/images/flags/ru.png" alt=""> Русский</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-bubbles4"></i>
+							<span class="visible-xs-inline-block position-right">Messages</span>
+							{if count((array)$new_msg) > 0}
+							<span class="badge bg-warning-400">{count((array)$new_msg)}</span>
+							{/if}
+						</a>
+
+						<div class="dropdown-menu dropdown-content width-350">
+							<div class="dropdown-content-heading">
+								Messages
+								<ul class="icons-list">
+									<li>{anchor("message/create-message","<i class='icon-compose'></i>")}</li>
+								</ul>
+							</div>
+
+							<ul class="media-list dropdown-content-body">
+							{if count($new_msg) < 1}
+							<li class="media">
+								<span class="text-muted text-center">No new message</span>
+							</li>
+							{/if}
+							{foreach $new_msg as $a}
+								<li class="media">
+									<div class="media-left">
+										<img src="{theme_url()}panel/assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
+									</div>
+
+									<div class="media-body">
+										<a href="#" class="media-heading">
+											<span class="text-semibold">{$a->name}</span>
+											<span class="media-annotation pull-right"> {time_elapsed_string($a->created)} </span>
+										</a>
+
+										<span class="text-muted">{limit_to_numwords($a->body,10)} ...</span>
+									</div>
+								</li>
+							{/foreach}
+							</ul>
+
+							<div class="dropdown-content-footer">
+							<a href="{$fulldomain}message/inbox" data-popup="tooltip" title="{lang('message_all')}"><i class='icon-menu display-block'></i></a>
+							</div>
+						</div>
+					</li>
+
+					<li class="dropdown dropdown-user">
+						<a class="dropdown-toggle" data-toggle="dropdown">
+							<img src="{theme_url()}panel/assets/images/image.png" alt="">
+							<span>{lang('general_welcome')}, {$session_data->first_name}</span>
+							<i class="caret"></i>
+						</a>
+
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="{site_url('message/inbox')}">
+								{if count($new_msg) >= 1} <span class="badge badge-warning pull-right">{count((array)$new_msg)}</span>{/if}
+								<i class="icon-comment-discussion"></i>{lang('general_message')}</a>
+							</li>
+							<li class="divider"></li>
+							<li>{anchor('users/profile','<i class="icon-cog5"></i>'|cat:lang('general_account_settings'))}</li>
+							<li>{anchor('auth/logout','<i class="icon-switch2"></i>'|cat:lang('general_logout'))}</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- /main navbar -->
+
+
+		<!-- Second navbar -->
+		<div class="navbar navbar-default" id="navbar-second">
+			<ul class="nav navbar-nav no-border visible-xs-block">
+				<li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
+			</ul>
+
+			<div class="navbar-collapse collapse" id="navbar-second-toggle">
+				<ul class="nav navbar-nav">
+					<li>{anchor('dashboard','<i class="icon-display4 position-left"></i>'|cat:lang('general_dashboard'))}</li>
+
+					{if $this->ion_auth->is_admin() }
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-user position-left"></i> {lang('general_users')} <span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu width-200">
+							<li>{anchor('users','<i class="icon-user"></i>'|cat:lang('general_users'),'title="Users"')}</li>
+							<li>{anchor('users/group','<i class="icon-users2"></i>'|cat:lang('general_group'),'title="Group"')}</li>
+						</ul>
+					</li>
+					{/if}
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-cog position-left"></i> {lang('general_setting')} <span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu width-200">
+							<li>{anchor('setting/','<i class="icon-equalizer2"></i>'|cat:lang('general_general'),'title="Setting"')}</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-magazine position-left"></i> {lang('general_content')} <span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu width-200">
+							<li>{anchor('post/','<i class="icon-design"></i>'|cat:lang('general_post'),'title="Post"')}</li>
+							<li>{anchor('event/','<i class="icon-calendar"></i>'|cat:lang('general_event'),'title="Event"')}</li>
+							<li>{anchor('slider/','<i class="icon-image2"></i>'|cat:lang('general_slider'),'title="Slider"')}</li>
+							<li>{anchor('gallery/','<i class="icon-images2"></i>'|cat:lang('general_gallery'),'title="Gallery"')}</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-user position-left"></i> {lang('general_pages')} <span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu width-200">
+							<li>{anchor('pages/','<i class="icon-users2"></i>'|cat:lang('general_pages_list'),'title="Pages List"')}</li>
+							<li>{anchor('pages/add-pages','<i class="icon-user"></i>'|cat:lang('general_pages_add'),'title="Add new Pages"')}</li>
+							<li>{anchor('pages/order','<i class="icon-user"></i>'|cat:lang('general_pages_order'),'title="Order Pages"')}</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-mailbox position-left"></i> {lang('general_message')} <span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu width-200">
+							<li>{anchor('message/all','<i class="icon-envelop"></i>'|cat:lang('message_all'),'title="All Message"')}</li>
+							<li>{anchor('message/inbox','<i class="icon-drawer-in"></i>'|cat:lang('general_message_inbox'),'title="Inbox"')}</li>
+							<li>{anchor('message/sent','<i class="icon-drawer-out"></i>'|cat:lang('general_message_sent'),'title="Sent Message"')}</li>
+							<li>{anchor('message/draft','<i class="icon-pencil7"></i>'|cat:lang('general_message_draft'),'title="Draft Message"')}</li>
+						</ul>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+		<!-- /second navbar -->
+	</div>
+	<!-- /fixed navbars wrapper -->
+
+	<!-- Page header -->
+	<div class="page-header">
+		<div class="page-header-content">
+			<div class="page-title">
+				<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">{$subtitle}</span></h4>
+
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li>{anchor('dashboard','Dashboard')}</li>
+					<li class="active">Users</li>
+				</ul>
+			</div>
+
+			<div class="heading-elements">
+				{block name=page_navigations}{/block}
+				<a href="javascript:history.back()" class="btn btn-warning btn-labeled heading-btn"><b><i class='icon-undo2'></i></b> {lang('general_back')}</a>
+			</div>
+		</div>
+	</div>
+	<!-- /page header -->
+
+	<!-- Page container -->
+	<div class="page-container">
+	<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				{block name=main_content}{/block}
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+	</div>
+	<!-- /page container -->
+</body>
+</html>

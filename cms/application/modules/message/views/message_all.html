@@ -1,0 +1,77 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<!-- Theme JS files -->
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/message.js"></script>
+{/block}
+
+
+{block name=page_navigations}
+	{anchor("message/create-message", "<b><i class='icon-envelop2'></i></b>"|cat:lang('message_create'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{/block}
+
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('message_inbox_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+
+	</div>
+
+	<table class="table datatable-basic" id="message-list">
+		<thead>
+			<tr>
+				<th width="10px"><input type="checkbox" class="styled" id="check-all"></th>
+				<th>{lang('message_to_from')}</th>
+				<th>{lang('message_subject')}</th>
+				<th>{lang('message_type')}</th>
+				<th>{lang('message_date')}</th>
+				<th class="text-center">{lang('general_actions')}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if (count($msg_data))}
+			{foreach $msg_data as $item}
+			<tr>
+				<td><input type="checkbox" name="message-id[]" class="styled" value="{$item->id}"></td>
+				<td><a href="#" class="text-default" data-popup="tooltip" title="{$item->email} <br> IP: {$item->ip}" data-html="true"><i class="icon-bubbles7"></i></a> &nbsp;<strong>{$item->name}</strong></td>
+				<td width="30%">{htmlspecialchars($item->subject)}</td>
+				<td>
+				{if $item->type eq 'in'}
+				<span class="label bg-primary"><i class="icon-download4"></i></span>
+				{else if $item->type eq 'out'}
+				<span class="label bg-success"><i class="icon-upload4"></i></span>
+				{else}
+				<span class="label bg-grey"><i class="icon-bubble-dots3"></i></span>
+				{/if}
+				</td>
+				<td>{fdate($site_setting->dateformat, $item->created)}</td>
+				<td class="text-center">
+					{anchor("message/delete-message/`$item->id`","<i class='icon-bin'></i>"," data-trigger='delete' class='text-default'")}
+				</td>
+			</tr>
+			{/foreach}
+		{/if}
+		</tbody>
+	</table>
+	<!-- /basic datatable -->
+
+
+</div>
+<!-- /table -->
+{/block}

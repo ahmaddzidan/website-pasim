@@ -1,0 +1,43 @@
+<!-- .Kalender -->
+<div class="col-md-12 col-sm-6">
+	<div class="panel panel-primary content-item">
+		<div class="panel-heading">
+			<h3 class="panel-title">Kalender<i class="fa fa-plus pull-right"></i></h3>
+		</div>
+		<div class="panel-body p-0">
+    {literal}
+			<div id="mini-clndr">
+        <script id="mini-clndr-template" type="text/template">
+
+          <div class="controls">
+            <div class="clndr-previous-button">&lsaquo;</div><div class="month"><%= month %></div><div class="clndr-next-button">&rsaquo;</div>
+          </div>
+          <div class="days-container">
+            <div class="days">
+              <div class="headers">
+                <% _.each(daysOfTheWeek, function(day) { %><div class="day-header"><%= day %></div><% }); %>
+              </div>
+              <% _.each(days, function(day) { %><div class="<%= day.classes %>" id="<%= day.id %>"><%= day.day %></div><% }); %>
+            </div>
+            <div class="events">
+              <div class="headers">
+                <div class="x-button">x</div>
+                <div class="event-header">EVENTS</div>
+              </div>
+              <div class="events-list">
+                <% _.each(eventsThisMonth, function(event) { %>
+                  <div class="event">
+                    <a href="<%= event.url %>"><%= moment(event.date).format('MMMM Do') %>: <%= event.title %></a>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+
+        </script>
+  {/literal}
+      </div>
+		</div>
+	</div>
+</div>
+<!-- /.Kalender -->

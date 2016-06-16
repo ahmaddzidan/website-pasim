@@ -1,0 +1,118 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/users.js"></script>
+{/block}
+
+{block name=page_navigations}
+{anchor("users/create_user", "<b><i class='icon-user'></i></b>"|cat:lang('create_user_submit_btn'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{anchor("users/create_group", "<b><i class='icon-users'></i></b>"|cat:lang('create_group_submit_btn'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{/block}
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('index_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+		{lang('index_subheading')}
+	</div>
+
+	<!-- <div class="table-responsive"> -->
+		<table class="table datatable-basic" id="user-list">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>{lang('index_fname_th')}</th>
+					<th>{lang('index_lname_th')}</th>
+					<th>{lang('index_email_th')}</th>
+					<th>{lang('index_groups_th')}</th>
+					<th>{lang('index_status_th')}</th>
+					<th>{lang('index_action_th')}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{foreach $users as $i}
+			{if $i->id neq '1'}
+				<tr>
+					<td>{$i->id}</td>
+					<td>{htmlspecialchars($i->first_name)}</td>
+					<td>{htmlspecialchars($i->last_name)}</td>
+					<td>{htmlspecialchars($i->email)}</td>
+					<td>
+					{foreach $i->groups as $group}
+						{anchor("users/edit_group/`$group->id`", "<label class='label bg-success-400'>`$group->name|escape`</label>")}
+					{/foreach}
+					</td>
+					<td>
+					{if $i->active eq 1}
+						<a href="users/deactivate/{$i->id}" class="btn btn-success btn-labeled btn-xs"><b><i class="icon-check"></i></b> {lang('index_active_link')}</a>
+					{else}
+						<a href="users/activate/{$i->id}" class="status-toggle btn btn-danger btn-labeled btn-xs"><b><i class="icon-cross"></i></b>{lang('index_inactive_link')}</a>
+					{/if}
+					</td>
+
+					<td>
+						<ul class="icons-list">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li>{anchor("users/edit_user/`$i->id`","<i class='icon-pencil7'></i>"|cat:lang('general_edit'))}</li>
+								<li>{anchor("users/delete_user/`$i->id`","<i class='icon-bin'></i>"|cat:lang('general_delete')," data-trigger='delete'")}
+								</li>
+								<li>
+								{if $i->active eq '1'}
+									{anchor("users/deactivate/`$i->id`","<i class='icon-cross'></i>"|cat:lang('general_deactive'))}
+								{else}
+									{anchor("users/activate/`$i->id`","<i class='icon-check'></i>"|cat:lang('general_set_active'))}
+								{/if}
+								</li>
+							</ul>
+						</li>
+					</ul>
+					</td>
+				</tr>
+			{else}
+				<tr class="text-muted">
+					<td>{$i->id}</td>
+					<td>{htmlspecialchars($i->first_name)}</td>
+					<td>{htmlspecialchars($i->last_name)}</td>
+					<td>{htmlspecialchars($i->email)}</td>
+					<td>
+					{foreach $i->groups as $group}
+					<a href="javascript:void(0)"><label class='label bg-grey-300'>{$group->name|escape}</label></a>
+					{/foreach}
+					</td>
+					<td>
+					{if $i->active eq 1}
+						<a href="javascript:void(0)" class="btn bg-grey-300 btn-labeled btn-xs"><b><i class="icon-check"></i></b> {lang('index_active_link')}</a>
+					{else}
+						<a href="javascript:void(0)" class="status-toggle btn btn-danger btn-labeled btn-xs"><b><i class="icon-cross"></i></b>{lang('index_inactive_link')}</a>
+					{/if}
+					</td>
+					<td>
+					-
+					</td>
+				</tr>
+			{/if}
+			{/foreach}
+			</tbody>
+		</table>
+	<!-- </div> -->
+</div>
+<!-- /table -->
+{/block}

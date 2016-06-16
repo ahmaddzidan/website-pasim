@@ -1,0 +1,184 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<!-- Load plugin -->
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/switch.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/uploaders/fileinput.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/setting.js"></script>
+{/block}
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('setting_general_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+	{validation_errors()}
+		{form_open_multipart(uri_string(),'class="form-horizontal"')}
+		<fieldset class="content-group">
+		<legend class="text-bold">{lang('setting_general_subheading')}</legend>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_title')}</label>
+				<div class="col-lg-10">
+					{form_input($site_title)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_domain')}</label>
+				<div class="col-lg-10">
+					{form_input($site_domain)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_description')}</label>
+				<div class="col-lg-10">
+					{form_textarea($site_description)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_meta_keyword')}</label>
+				<div class="col-lg-10">
+					{form_textarea($meta_keyword)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_owner')}</label>
+				<div class="col-lg-10">
+					{form_input($owner)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_support')}</label>
+				<div class="col-lg-10">
+					{form_input($support)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_support_email')}</label>
+				<div class="col-lg-10">
+					{form_input($support_email)}
+				</div>
+			</div>
+			</fieldset>
+			<fieldset class="content-group">
+			<legend class="text-bold">{lang('setting_general_email')}</legend>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_smtp_host_type')}</label>
+				<div class="col-lg-10">
+					{form_dropdown($smtp_host_type, $option, $selected)}
+				</div>
+			</div>
+			<div class="is-smtp {if $selected eq '0'}hidden{/if}">
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_smtp_host')}</label>
+				<div class="col-lg-10">
+					{form_input($smtp_host)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_smtp_port')}</label>
+				<div class="col-lg-10">
+					{form_input($smtp_port)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_smtp_username')}</label>
+				<div class="col-lg-10">
+					{form_input($smtp_username)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_smtp_password')}</label>
+				<div class="col-lg-10">
+					{form_input($smtp_password)}
+				</div>
+			</div>
+			</div>
+			</fieldset>
+			<fieldset class="content-group">
+			<legend class="text-bold">{lang('setting_general_social_media')}</legend>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_facebook_address')}</label>
+				<div class="col-lg-10">
+					{form_input($facebook_address)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_twitter_address')}</label>
+				<div class="col-lg-10">
+					{form_input($twitter_address)}
+				</div>
+			</div>
+			</fieldset>
+			<fieldset class="content-group">
+			<legend class="text-bold">{lang('setting_general_contact')}</legend>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_telephone')}</label>
+				<div class="col-lg-10">
+					{form_input($telephone)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_mobile_contact')}</label>
+				<div class="col-lg-10">
+					{form_input($mobile_contact)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_address')}</label>
+				<div class="col-lg-10">
+					{form_textarea($address)}
+				</div>
+			</div>
+			</fieldset>
+			<fieldset class="content-group">
+			<legend class="text-bold">{lang('setting_general_others')}</legend>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_logo_header')}</label>
+				<div class="col-lg-10">
+					{form_input($logo_header)}
+					<span class="help-block">{lang('setting_general_logo_header_helptext')}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_logo_footer')}</label>
+				<div class="col-lg-10">
+					{form_input($logo_footer)}
+					<span class="help-block">{lang('setting_general_logo_footer_helptext')}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_status')}</label>
+				<div class="col-lg-10">
+					{form_input($status)}
+					{form_input($status_id)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('setting_general_unavailable')}</label>
+				<div class="col-lg-10">
+					{form_input($unavailable_message)}
+				</div>
+			</div>
+
+
+      		<div class="col-lg-offset-2 col-lg-10">
+      		{form_submit('submit', lang('setting_general_save'),'class="btn btn-primary"')}
+			<a href="javascript:history.back()" class="btn bg-teal">{lang('general_back')}</a>
+			</div>
+		</fieldset>
+		{form_close()}
+	</div>
+
+</div>
+<!-- /table -->
+{/block}

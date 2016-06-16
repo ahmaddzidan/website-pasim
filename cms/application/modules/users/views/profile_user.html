@@ -1,0 +1,74 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/users.js"></script>
+{/block}
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('profile_user_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+		<p class="content-group">{lang('profile_user_subheading')}</p>
+		{form_open(uri_string(),'class="form-horizontal"')}
+		<fieldset class="content-group">
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('profile_user_fname_label')}</label>
+				<div class="col-lg-10">
+					{form_input($first_name)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('profile_user_lname_label')}</label>
+				<div class="col-lg-10">
+					{form_input($last_name)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('profile_user_company_label')}</label>
+				<div class="col-lg-10">
+					{form_input($company)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('profile_user_phone_label')}</label>
+				<div class="col-lg-10">
+					{form_input($phone)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('profile_user_password_label')}</label>
+				<div class="col-lg-10">
+					{form_input($password)}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">{lang('profile_user_password_confirm_label')}</label>
+				<div class="col-lg-10">
+					{form_input($password_confirm)}
+				</div>
+			</div>
+			{form_hidden('id', $user->id)}
+      		{form_hidden($csrf)}
+      		<div class="col-lg-offset-2 col-lg-10">
+      		{form_submit('submit', lang('profile_user_submit_btn'),'class="btn btn-primary"')}
+      		<a href="javascript:history.back()" class="btn bg-teal">{lang('general_back')}</a>
+			</div>
+		</fieldset>
+		{form_close()}
+	</div>
+
+</div>
+<!-- /table -->
+{/block}

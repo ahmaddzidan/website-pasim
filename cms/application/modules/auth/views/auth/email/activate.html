@@ -1,0 +1,610 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Define Charset -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Responsive Meta Tag -->
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+
+    <title>MultiMail - Responsive Email Template</title><!-- Responsive Styles and Valid Styles -->
+	
+	<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+	
+    <style type="text/css">
+    
+    	
+	    body{
+            width: 100%; 
+            background-color: #efefef; 
+            margin:0; 
+            padding:0; 
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        p,h1,h2,h3,h4{
+	        margin-top:0;
+			margin-bottom:0;
+			padding-top:0;
+			padding-bottom:0;
+        }
+        
+        span.preheader{display: none; font-size: 1px;}
+        
+        html{
+            width: 100%; 
+        }
+        
+        table{
+            font-size: 14px;
+            border: 0;
+            border-collapse:collapse; 
+            mso-table-lspace:0pt; 
+            mso-table-rspace:0pt;
+        }
+        
+        /* ----------- responsivity ----------- */
+        @media only screen and (max-width: 640px){
+			/*------ top header ------ */
+			.rounded-edg-bg{width: 440px !important; height: 10px !important;}
+            .main-header{line-height: 28px !important; font-size: 17px !important;}
+            .subheader{width: 390px !important;}
+            .main-subheader{line-height: 28px !important;}
+            
+			/*----- main image -------*/
+			.main-image img{width: 420px !important; height: auto !important;}
+			
+			/*-------- container --------*/		
+			.container600{width: 430px !important;}	
+			.container580{width: 410px !important;}
+			.container560{width: 390px !important;}
+			.main-content{width: 408px !important;}
+			/*-------- divider --------*/			
+			.divider img{width: 430px !important; height: 1px !important;}
+			
+			/*-------- secions ----------*/
+			.section-item{width: 390px !important; text-align: center !important;}
+			.table-inside{width: 408px !important;}
+            /*.section-img img{width: 390px !important; height: auto !important;}*/
+            .table-rounded-edg-bg{width: 410px !important; height: 5px !important;}
+			           
+			/*-------- envelope graphique ------------*/
+			.envelope-top600{width: 448px !important;}
+			.envelope-top600 img{width: 448px !important;}
+			.top-envelope600{width: 448px !important;}
+			.top-envelope600 img{width: 448px !important;}
+			
+			.middle-envelope600{width: 448px !important;}
+			.middle-envelope600 img.left{width: 158px !important; height: 56px !important;}
+			.middle-envelope600 img.right{width: 150px !important; height: 58px !important;}
+			.footer-logo{width: 100px !important;}
+			
+			.bottom-envelope600{width: 448px !important;}
+			.bottom-envelope600 .left{width: 92px !important;}
+			.bottom-envelope600 .right{width: 85px !important;}
+			.bottom-envelope600 .unsubscribe{width: 200px !important;}
+			.bottom-envelope600 .unsubscribe-text{line-height: 20px !important};
+		}
+		
+		@media only screen and (max-width: 479px){
+			
+			/*------ top header ------ */
+			
+            .main-header{line-height: 28px !important; font-size: 17px !important;}
+            .subheader{width: 260px !important;}
+            .main-subheader{line-height: 28px !important;}
+            
+			/*----- main image -------*/
+			.main-image img{width: 260px !important; height: auto !important;}
+			
+			/*-------- container --------*/		
+			.container600{width: 270px !important;}		
+			.container580{width: 270px !important;}
+			.container560{width: 250px !important;}
+			.main-content{width: 268px !important;}
+			/*-------- divider --------*/			
+			.divider img{width: 260px !important; height: 1px !important;}
+			
+			/*-------- secions ----------*/
+			.section-item{width: 250px !important; text-align: center !important;}
+			
+            /*.section-img img{width: 250px !important; height: auto !important;}*/
+			
+			/*-------- cta ----------*/
+			.icon img{width: 20px !important; height: 20px !important;}
+			.cta-text{text-align: center !important; line-height: 24px !important;}
+           
+			/*-------- footer ------------*/
+			/*-------- envelope graphique ------------*/
+			.envelope-top600 {width: 278px !important;}
+			.envelope-top600 img{width: 278px !important;}
+			.top-envelope600{width: 278px !important;}
+			.top-envelope600 img{width: 278px !important;}
+			
+			.middle-envelope600{width: 278px !important;}
+			.middle-envelope600 img.left{width: 158px !important; height: auto !important; display: none !important;}
+			.middle-envelope600 img.right{width: 150px !important; height: auto !important; display: none !important;}
+			.footer-logo{width: 100px !important;}
+			
+			.bottom-envelope600{width: 278px !important;}
+			.bottom-envelope600 .left{width: 92px !important; display: none !important;}
+			.bottom-envelope600 .right{width: 85px !important; display: none !important;}
+			.bottom-envelope600 .unsubscribe{width: 200px !important;}
+			.bottom-envelope600 .unsubscribe-text{line-height: 20px !important;}
+			
+			/*-------- social ------------*/
+			.social-text{display: none !important;}
+		}
+		
+	</style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+	<!--======= preheader ======-->
+	<span class="preheader">{sprintf(lang('email_activate_heading'), $identity)}<br/></span>
+	<!--======= end preheader ======-->
+	
+	<table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="efefef">
+		
+		<!----------- logo ------------->
+		<tr><td height="50"></td></tr>
+		
+		<tr>
+			<td align="center">
+				<a href="" style="display: block; width: 231px; height: 33px; border-style: none !important; border: 0 !important;"><img editable="true" mc:edit="logo" width="231" height="33" border="0" style="display: block; width: 231px; height: 33px" src="http://promailthemes.com/multimail/layout1/orange/img/logo.png" alt="logo" /></a>
+			</td>
+		</tr>
+		
+		<tr><td height="40"></td></tr>
+		<!----------- end logo ------------->
+		
+		<tr>
+			<td align="center">
+				<table width="600" cellpadding="0" align="center" cellspacing="0" border="0" class="container600">
+					<tr>
+						<td align="center" valign="top">
+							<img align="top" src="http://promailthemes.com/multimail/layout1/orange/img/shadow-left.png" style="display: block; width: 10px; height: 294px;" width="10" height="294" border="0" alt="" />
+						</td>
+						
+						<td align="center">
+							<table border="0" align="center" width="580" cellpadding="0" cellspacing="0" bgcolor="e0e0e0" class="container580">
+								<tr><td height="1"></td></tr>
+								<tr>
+									<td>
+										<table border="0" align="center" width="578" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="main-content">			
+										
+											<tr><td height="15"></td></tr>
+											<!----------- main image ------------->
+											<tr mc:repeatable>
+												<td>
+													<table border="0" align="center" width="560" cellpadding="0" cellspacing="0" bgcolor="e0e0e0" class="container560">
+													
+														<tr>
+															<td align="center" class="main-image">
+																<img editable="true" mc:edit="main-image" src="http://promailthemes.com/multimail/layout1/orange/img/main-image.png" style="display: block; width: 560px; height: 274px;" width="560" height="274" border="0" alt="main image" />
+															</td>
+														</tr>
+														
+													</table>
+												</td>
+											</tr>
+											<!----------- end main image ------------->
+											
+											<tr mc:repeatable><td height="40"></td></tr>
+											
+											<!----------- main text ------------->
+											
+											<tr mc:repeatable>
+						        				<td align="center">
+						        					<table border="0" width="560" align="center" cellpadding="0" cellspacing="0" class="container560">
+						        						<tr>
+						        							<td align="center" mc:edit="main-header" style="color: #454545; font-size: 18px; font-family: 'Noto Sans', Arial, sans-serif;" class="main-header">
+									        					<multiline>
+									        						WELCOME TO THE AWESOME MULTIMAIL TEMPLATE 
+									        					</multiline>
+									        				</td>	
+						        						</tr>
+						        						<tr><td height="20"></td></tr>
+						        						<tr>
+						        							<td align="center" mc:edit="main-subheader" style="color: #9f9f9f; font-size: 13px; font-family: 'Noto Sans', Arial, sans-serif; line-height: 28px;" class="main-subheader">
+						        								<multiline>
+						        									Just For you , The best template now available on themeforest 
+						        								</multiline>
+						        							</td>
+						        						</tr>
+						        						<tr><td height="30"></td></tr>
+						        						<tr>
+															<td align="center">
+																<a href="" style="display: block; width: 169px;  border-style: none !important; border: 0 !important;"><img editable="true" mc:edit="donwload-btn" width="169" height="43" border="0" style="display: block; width: 169px; height: 43px;" src="http://promailthemes.com/multimail/layout1/orange/img/download-btn.png" alt="download" /></a>
+																{sprintf(lang('email_activate_subheading'), anchor('auth/activate/'. $id .'/'. $activation, lang('email_activate_link')))}
+															</td>
+														</tr>	
+						        					</table>			
+						        				</td>
+						        			</tr>
+						        			<!----------- end main text ------------->
+						        			
+						        			<tr mc:repeatable><td height="55"></td></tr>
+						        			
+						        			<!-------------- divider ------------->
+											<tr mc:repeatable>
+												<td class="divider" align="center">
+													<img editable="false" mc:edit="divider" src="http://promailthemes.com/multimail/layout1/orange/img/divider.png" style="display: block; width: 565px; height: 1px;" width="565" height="1" border="0" alt="divider" />
+												</td>
+														
+											</tr>
+											<!-------------- end divider ------------->
+						        			
+						        			<tr mc:repeatable><td height="50"></td></tr>
+						        			
+						        			<!-------------- section 1 ------------->
+						        			<tr mc:repeatable>
+												<td align="center">
+													<table width="550" align="center" cellpadding="0" cellspacing="0" border="0" class="container560">
+														<tr mc:repeatable>
+										    				<td width="550" valign="middle">	
+										    					<table border="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="240" align="left" cellpadding="0" cellspacing="0" class="section-item">
+																	<tr>
+																		<td align="center" style="line-height: 160px;" class="section-img">
+																			<a href="" style=" border-style: none !important; border: 0 !important;"><img editable="true" mc:edit="image1" src="http://promailthemes.com/multimail/layout1/orange/img/image1.png" style="display: block; width: 210px; height: 160px;" width="200" height="160" border="0" alt="section image"/></a>
+																		</td>
+																	</tr>
+																</table>
+																
+																<table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" border="0" width="25" align="left" cellpadding="0" cellspacing="0">
+																	<tr><td width="25" height="30">&nbsp;</td></tr>
+																</table>
+																
+																<table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" border="0" width="275" align="left" cellpadding="0" cellspacing="0" class="section-item">
+																	
+																	<tr>
+																		<td mc:edit="title1" style="color: #454545; font-size: 17px; font-family: 'Noto Sans', Arial, sans-serif;" class="main-header">
+																			<div style="line-height: 100%">
+													        					<multiline>
+													        						Designed To Fit Your Brand
+													        					</multiline>
+																			</div>
+												        				</td>	
+																	</tr>
+																	
+																	<tr><td height="12"></td></tr>
+																	
+																	<tr>
+																		<td mc:edit="text1" style="color: #9f9f9f; font-size: 13px; font-family: 'Noto Sans', Arial, sans-serif; line-height: 30px;">
+																			<div style="line-height: 30px;">
+																			<multiline>
+																				Lorem ipsum dolor sit amet, consectetur adiscing elit morbi vel <a href="" style="text-decoration: none; color: #f5756c;">consectetur</a> dolor nuisque venenatis vel dui eget molestie in dolor dignissim.
+																			</multiline>
+																			</div>
+																		</td>
+																	</tr>
+																	
+																</table>
+																
+										    				</td>
+										    			</tr>
+													</table>
+												</td>
+											</tr>
+											<!-------------- end section 1 ------------->
+											
+											<tr mc:repeatable><td height="50"></td></tr>
+											
+											<!-------------- divider ------------->
+											<tr mc:repeatable>
+												<td class="divider" align="center">
+													<img editable="false" mc:edit="divider" src="http://promailthemes.com/multimail/layout1/orange/img/divider.png" style="display: block; width: 565px; height: 1px;" width="565" height="1" border="0" alt="divider" />
+												</td>
+														
+											</tr>
+											<!-------------- end divider ------------->
+											
+											<tr mc:repeatable><td height="50"></td></tr>
+											
+											<!-------------- section 2 ------------->
+						        			<tr mc:repeatable>
+												<td align="center">
+													<table width="550" align="center" cellpadding="0" cellspacing="0" border="0" class="container560">
+														<tr>
+										    				<td width="550" valign="middle" align="center">	
+										    					<table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" border="0" width="275" align="left" cellpadding="0" cellspacing="0" class="section-item">
+																	
+																	<tr>
+																		<td mc:edit="title2" style="color: #454545; font-size: 17px; font-family: 'Noto Sans', Arial, sans-serif;" class="main-header">
+																			<div style="line-height: 100%">
+													        					<multiline>
+													        						Designed To Fit Your Brand
+													        					</multiline>
+																			</div>
+												        				</td>	
+																	</tr>
+																	
+																	<tr><td height="12"></td></tr>
+																	
+																	<tr>
+																		<td mc:edit="text2" style="color: #9f9f9f; font-size: 13px; font-family: 'Noto Sans', Arial, sans-serif; line-height: 30px;">
+																			<div style="line-height: 30px;">
+																			<multiline>
+																				Lorem ipsum dolor sit amet, consectetur adiscing elit morbi vel <a href="" style="text-decoration: none; color: #f5756c;">consectetur</a> dolor nuisque venenatis vel dui eget molestie in dolor dignissim.
+																			</multiline>
+																			</div>
+																		</td>
+																	</tr>
+																	
+																</table>
+																
+																<table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" border="0" width="25" align="left" cellpadding="0" cellspacing="0">
+																	<tr><td width="25" height="30">&nbsp;</td></tr>
+																</table>
+																
+										    					<table border="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="240" align="left" cellpadding="0" cellspacing="0" class="section-item">
+																	<tr>
+																		<td align="center" style="line-height: 160px;" class="section-img">
+																			<a href="" style=" border-style: none !important; border: 0 !important;"><img editable="true" mc:edit="image2" src="http://promailthemes.com/multimail/layout1/orange/img/image2.png" style="display: block; width: 240px; height: 160px;" width="200" height="160" border="0" alt="section image"/></a>
+																		</td>
+																	</tr>
+																</table>
+																
+										    				</td>
+										    			</tr>
+													</table>
+												</td>
+											</tr>
+											<!-------------- end section 2 ------------->
+											
+											<tr mc:repeatable><td height="50"></td></tr>
+											
+											<!-------------- divider ------------->
+											<tr mc:repeatable>
+												<td class="divider" align="center">
+													<img editable="false" mc:edit="divider" src="http://promailthemes.com/multimail/layout1/orange/img/divider.png" style="display: block; width: 565px; height: 1px;" width="565" height="1" border="0" alt="divider" />
+												</td>
+														
+											</tr>
+											<!-------------- end divider ------------->
+											
+											<tr mc:repeatable><td height="50"></td></tr>
+											
+											<!-------------- section 3 ------------->
+						        			<tr mc:repeatable>
+												<td align="center">
+													<table width="550" align="center" cellpadding="0" cellspacing="0" border="0" class="container560">
+														<tr>
+										    				<td width="550" valign="middle">	
+										    					<table border="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="240" align="left" cellpadding="0" cellspacing="0" class="section-item">
+																	<tr>
+																		<td align="center" style="line-height: 160px;" class="section-img">
+																			<a href="" style=" border-style: none !important; border: 0 !important;"><img editable="true" mc:edit="image3" src="http://promailthemes.com/multimail/layout1/orange/img/image3.png" style="display: block; width: 210px; height: 160px;" width="200" height="160" border="0" alt="section image"/></a>
+																		</td>
+																	</tr>
+																</table>
+																
+																<table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" border="0" width="25" align="left" cellpadding="0" cellspacing="0">
+																	<tr><td width="25" height="30">&nbsp;</td></tr>
+																</table>
+																
+																<table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" border="0" width="275" align="left" cellpadding="0" cellspacing="0" class="section-item">
+																	
+																	<tr>
+																		<td mc:edit="title3" style="color: #454545; font-size: 17px; font-family: 'Noto Sans', Arial, sans-serif;" class="main-header">
+																			<div style="line-height: 100%">
+													        					<multiline>
+													        						Designed To Fit Your Brand
+													        					</multiline>
+																			</div>
+												        				</td>	
+																	</tr>
+																	
+																	<tr><td height="12"></td></tr>
+																	
+																	<tr>
+																		<td mc:edit="text3" style="color: #9f9f9f; font-size: 13px; font-family: 'Noto Sans', Arial, sans-serif; line-height: 30px;">
+																			<div style="line-height: 30px;">
+																			<multiline>
+																				Lorem ipsum dolor sit amet, consectetur adiscing elit morbi vel <a href="" style="text-decoration: none; color: #f5756c;">consectetur</a> dolor nuisque venenatis vel dui eget molestie in dolor dignissim.
+																			</multiline>
+																			</div>
+																		</td>
+																	</tr>
+																	
+																</table>
+																
+										    				</td>
+										    			</tr>
+													</table>
+												</td>
+											</tr>
+											<!-------------- end section 3 ------------->
+											
+											<tr mc:repeatable><td height="50"></td></tr>
+											
+											<!-------------- divider ------------->
+											<tr mc:repeatable>
+												<td class="divider" align="center">
+													<img editable="false" mc:edit="divider" src="http://promailthemes.com/multimail/layout1/orange/img/divider.png" style="display: block; width: 565px; height: 1px;" width="565" height="1" border="0" alt="divider" />
+												</td>	
+											</tr>
+											<!-------------- end divider ------------->
+											
+											<tr><td height="50"></td></tr>
+											
+											<!-------------- social ------------->
+											<tr mc:repeatable>
+												<td align="center">
+												
+													<table width="510" align="center" cellpadding="0" cellspacing="0" border="0" class="container560">
+														<tr>
+										    				<td align="center">
+										    				
+										    					<table width="150" align="left" cellpadding="0" cellspacing="0" border="0" class="container560">
+																	<tr>
+													    				<td align="center" mc:edit="socail-text" style="color: #454545; font-size: 16px; font-family: 'Noto Sans', Arial, sans-serif; line-height: 30px;">
+																			
+													        					<multiline>
+													        						Connect with us via 
+													        					</multiline>
+																			
+												        				</td>
+																	</tr>
+										    					</table>
+										    					
+										    					<table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" border="0" width="20" align="left" cellpadding="0" cellspacing="0" class="container560">
+																	<tr><td width="20" height="20">&nbsp;</td></tr>
+																</table>
+																
+										    					<table width="320" align="left" cellpadding="0" cellspacing="0" border="0" class="container560">
+																	<tr>
+													    				<td mc:edit="social-icons" style="color: #454545; font-size: 16px; font-family: 'Noto Sans', Arial, sans-serif;">
+																			<table border="0" align="center" cellpadding="0" cellspacing="0">
+										                						<tr>
+										                							<td mc:edit="twitter-text" style="color: #454545; font-size: 16px; font-family: 'Noto Sans', Arial, sans-serif;" class="social-text">
+																        					<singleline>
+																        						Twitter
+																        					</singleline>
+																						</div>
+																					</td>
+																					
+																					<td>&nbsp;&nbsp;&nbsp;</td>
+																					
+										                							<td>
+										                								<a style="display: block; width: 30px; border-style: none !important; border: 0 !important;" href="#"><img editable="true" mc:edit="twitter" width="30" height="30" border="0" style="display: block; width: 30px; height: 30px;" src="http://promailthemes.com/multimail/layout1/orange/img/twitter.png" alt="twitter" /></a>		
+										                							</td>
+										                							
+										                							<td>&nbsp;&nbsp;&nbsp;</td>
+										                							
+										                							<td mc:edit="facebook-text" style="color: #454545; font-size: 16px; font-family: 'Noto Sans', Arial, sans-serif;" class="social-text">
+																        					<singleline>
+																        						Facebook
+																        					</singleline>
+																						</div>
+																					</td>
+																					
+																					<td>&nbsp;&nbsp;&nbsp;</td>
+																					
+										                							<td>
+										                								<a style="display: block; width: 24px; border-style: none !important; border: 0 !important;" href="#"><img editable="true" mc:edit="facebook" width="15" height="30" border="0" style="display: block; width: 15px; height: 30px;" src="http://promailthemes.com/multimail/layout1/orange/img/facebook.png" alt="facebook" /></a>		
+										                							</td>
+										                							
+										                							<td>&nbsp;&nbsp;&nbsp;</td>
+										                							
+										                							<td mc:edit="google-text" style="color: #454545; font-size: 16px; font-family: 'Noto Sans', Arial, sans-serif;" class="social-text">
+																        					<singleline>
+																        						Google
+																        					</singleline>
+																						</div>
+																					</td>
+																					
+																					<td>&nbsp;&nbsp;&nbsp;</td>
+										                							<td>
+										                								<a style="display: block; width: 26px; border-style: none !important; border: 0 !important;" href="#"><img editable="true" mc:edit="google" width="26" height="30" border="0" style="display: block; width: 26px; height: 30px;" src="http://promailthemes.com/multimail/layout1/orange/img/google.png" alt="google" /></a>		
+										                							</td>
+										                						</tr>
+										                					</table>	
+												        				</td>
+																	</tr>
+										    					</table>	
+										    				</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-------------- end social ------------->
+											<tr><td height="20"></td></tr>
+											
+										</table>
+									</td>
+								</tr>
+							</table>
+				        </td>
+				        
+				        <td align="center" valign="top">
+							<img align="top" src="http://promailthemes.com/multimail/layout1/orange/img/shadow-right.png" style="display: block; width: 10px; height: 294px;" width="10" height="294" border="0" alt="" />
+						</td>
+									
+					</tr>
+					
+				</table>
+			</td>
+		</tr>
+		
+		<!-------------- footer ------------->
+		<tr>
+			<td align="center">
+				<table width="600" cellpadding="0" align="center" cellspacing="0" border="0" class="envelope-top600">
+					<tr>
+						<td align="center" style="line-height: 13px;">
+							<img editable="false" src="http://promailthemes.com/multimail/layout1/orange/img/envelope-top.png" style="display: block; width: 600px; height: 13px;" width="600" height="13" border="0" alt="" />
+						</td>	
+					</tr>
+				</table>
+			</td>
+		</tr>			
+		<tr>
+			<td align="center">
+				<table width="600" cellpadding="0" align="center" cellspacing="0" border="0" bgcolor="ffffff" class="top-envelope600">
+					<tr>
+						<td align="center">
+							<img editable="false" src="http://promailthemes.com/multimail/layout1/orange/img/top-envelope.png" style="display: block; width: 600px; height: 78px;" width="600" height="78" border="0" alt="" />
+						</td>	
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" valign="top">
+				<table width="600" cellpadding="0" align="center" cellspacing="0" border="0" bgcolor="f7f7f7" class="middle-envelope600">
+					<tr>
+						<td align="center" valign="top">
+							<img editable="false" src="http://promailthemes.com/multimail/layout1/orange/img/middle-envelope-left.png" style="display: block; width: 218px; height: 53px;" width="218" height="53" border="0" alt="" class="left"/>
+						</td>	
+						<td align="center">
+							<table width="173" cellpadding="0" align="center" cellspacing="0" border="0" bgcolor="f7f7f7" class="footer-logo">
+								<tr>
+									<td align="center" valign="middle">
+										<img align="middle" mc:edit="logo2" editable="true" src="http://promailthemes.com/multimail/layout1/orange/img/footer-logo.png" style="display: block; width: 43px; height: 42px;" width="43" height="42" border="0" alt="" />
+									</td>	
+								</tr>
+							</table>
+						</td>
+						<td align="center">
+							<img editable="false" src="http://promailthemes.com/multimail/layout1/orange/img/middle-envelope-right.png" style="display: block; width: 209px; height: 53px;" width="209" height="53" border="0" alt="" class="right" />
+						</td>	
+					</tr>
+				</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<td align="center">
+				<table width="600" cellpadding="0" align="center" cellspacing="0" border="0" bgcolor="f7f7f7" class="bottom-envelope600">
+					<tr>
+						<td align="center" valign="top">
+							<img align="top" editable="false" src="http://promailthemes.com/multimail/layout1/orange/img/bottom-envelope-left.png" style="display: block; width: 128px; height: 82px;" width="130" height="82" border="0" alt="" class="left" />
+						</td>	
+						<td align="center">
+							<table width="350" cellpadding="0" align="center" cellspacing="0" border="0" bgcolor="f7f7f7" class="unsubscribe">
+								<tr>
+									<td align="center" mc:edit="title3" style="color: #9b9b9b; font-size: 11px; font-family: 'Noto Sans', Arial, sans-serif;" class="unsubscribe-text">
+										
+				        					<multiline>
+				        						You are subscribed to Multimail Newsletter <br/> <a href="" style="text-decoration: none; color: #f5756c; line-height: 30px;">Unsubscribe Here</a>
+				        					</multiline>
+										
+			        				</td>	
+								</tr>
+							</table>
+						</td>
+						<td align="center" valign="top">
+							<img align="top" editable="false" src="http://promailthemes.com/multimail/layout1/orange/img/bottom-envelope-right.png" style="display: block; width: 116px; height: 82px;" width="120" height="82" border="0" alt="" class="right" />
+						</td>	
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr><td height="50"></td></tr>
+	</table>
+	
+</body>
+</html>

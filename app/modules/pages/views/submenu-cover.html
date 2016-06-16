@@ -1,0 +1,68 @@
+{* Extend our master template *}
+{extends file="layout.html"}
+
+{block name=meta}
+	<meta name="keywords" content="{$websetting->metakeyword}, {$page->title}">
+	<meta name="title" property="og:title" content="{$page->title} | {$websetting->title}"/>
+	<meta name="description" property="og:description" content="{$websetting->description}">
+	<meta name="image" property="og:image" content="{$file_path}setting/{$websetting->headerlogo}" />
+	<meta name="dc.title" content="{$page->title} | {$websetting->title}" />
+	<meta name="twitter:title" value="{$page->title} | {$websetting->title}"/>
+	<meta name="twitter:description" value="{$websetting->description}" />
+	<meta name="twitter:image" value="{$file_path}setting/{$websetting->headerlogo}" />
+{/block}
+
+{block name=page_content}
+<div id="cover" style="background-image: url('{theme_url()}images/informatics-bg.jpg')">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			<h1>{$page->title}</h1>
+			<span class="cover-caption">{$page->body}</span>
+			<div class="clearfix">&nbsp;</div>
+			<!-- breadcrumb -->
+			<ol class="breadcrumb">
+			  <li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+			  <li><a href="#">Fakultas</a></li>
+			  <li><a href="#">Ilmu Komputer</a></li>
+			  <li class="active">S1 Teknik Informatika</li>
+			</ol>
+			<!-- /.breadcrumb -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- page content -->
+	<div id="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- nav submenu -->
+					{get_subnavigation($subnavigation)}
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-8">
+							<!-- breadcrumb -->
+							<ol class="breadcrumb">
+							  <li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+							  <li><a href="#">Tentang Kami</a></li>
+							  <li class="active">Rektor</li>
+							</ol>
+							<!-- /.breadcrumb -->
+							<!-- page description -->
+							<div class="page-description">
+								{$page->body}
+							</div>
+						<!-- /.page description -->
+						</div>
+						<div class="col-md-4">
+							{include file="sidebar.html"}
+							<!-- /#sidebar -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page content -->
+{/block}

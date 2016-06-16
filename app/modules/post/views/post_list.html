@@ -1,0 +1,67 @@
+{* Extend our master template *}
+{extends file="layout.html"}
+
+{block name=meta}
+	<meta name="keywords" content="{$websetting->metakeyword}, {$post_category}">
+	<meta name="title" property="og:title" content="{$websetting->title} {$post_category}"/>
+	<meta name="description" property="og:description" content="{$websetting->description}">
+	<meta name="image" property="og:image" content="{$file_path}setting/{$websetting->headerlogo}" />
+	<meta name="dc.title" content="{$websetting->title}" />
+	<meta name="twitter:title" value="{$websetting->title} {$post_category}"/>
+	<meta name="twitter:description" value="{$websetting->description}" />
+	<meta name="twitter:image" value="{$file_path}setting/{$websetting->headerlogo}" />
+{/block}
+
+{block name=page_content}
+
+<!-- page content -->
+	<div id="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-8">
+							<!-- breadcrumb -->
+							<ol class="breadcrumb">
+							  <li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+							  <li class="active">{$post_category}</li>
+							</ol>
+							<!-- /.breadcrumb -->
+							<!-- page description -->
+							<div class="page-description">
+								<h3>{$post_category} </h3>
+								<div class="clearfix"></div>
+
+								{foreach from=$post key=id item=p}
+								<div class="media">
+									<div class="media-left ml-15">
+									    <a href="#">
+									      <img width="150" height="150" class="media-object" width="" src="{$file_path}/post/{$p->images}" alt="{$p->title}">
+									    </a>
+								  	</div>
+									<div class="media-body">
+										<h3 class="media-heading">{anchor("/post/read/`$p->id`/`$p->slug`", $p->title)}</h3>
+										<span> <i class="fa fa-tag"></i> {$p->categories} </span> | <i class="fa fa-calendar"></i> <time datetime="{fdate('Y-m-d',$p->created)}">{cmsdate($p->created, 2)}</time>
+										<p>{$p->intro}</p>
+										{anchor("/post/read/`$p->id`/`$p->slug`", "Selengkapnya", 'class="btn btn-primary pull-right"')}
+									</div>
+								</div>
+								<hr>
+								{/foreach}
+
+								{$pagination} {$pager_message}
+							</div>
+						<!-- /.page description -->
+
+						</div>
+						<div class="col-md-4">
+							{include file="sidebar-post.html"}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page content -->
+	{/block}

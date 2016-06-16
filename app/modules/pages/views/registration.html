@@ -1,0 +1,247 @@
+{* Extend our master template *}
+{extends file="layout.html"}
+
+{block name=meta}
+	<meta name="keywords" content="{$websetting->metakeyword}, {$page-title}">
+	<meta name="title" property="og:title" content="{$page->title} | {$websetting->title}"/>
+	<meta name="description" property="og:description" content="{$websetting->description}">
+	<meta name="image" property="og:image" content="{$file_path}setting/{$websetting->headerlogo}" />
+	<meta name="dc.title" content="{$page->title} | {$websetting->title}" />
+	<meta name="twitter:title" value="{$page->title} | {$websetting->title}"/>
+	<meta name="twitter:description" value="{$websetting->description}" />
+	<meta name="twitter:image" value="{$file_path}setting/{$websetting->headerlogo}" />
+{/block}
+
+{block name=page_content}
+
+<!-- page content -->
+	<div id="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-8">
+							<!-- breadcrumb -->
+							<ol class="breadcrumb">
+							  <li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+							  <li class="active">Formulir Pendaftaran Online</li>
+							</ol>
+							<!-- /.breadcrumb -->
+							<!-- page description -->
+							<div class="page-description">
+
+							<!-- page description -->
+							<div class="mb-100">
+								<h3>Pendaftaran Online</h3>
+
+								<form action="#" method="POST" class="form-horizontal" role="form">
+									<div class="form-group">
+										<legend>Data Pribadi</legend>
+									</div>
+
+									<div class="form-group">
+									    <label for="inputNama" class="col-sm-2 control-label">Nama*</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputNama" placeholder="Nama" required="required" {literal} pattern="^.{3,}$" {/literal}title="Min 3 Characters" >
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputhari" class="col-sm-2 control-label">Tanggal Lahir*</label>
+									    <div class="col-sm-3">
+									      <input type="text" class="form-control" id="inputhari" placeholder="Hari" required="required">
+									    </div>
+									    <div class="col-sm-4">
+									      <input type="text" class="form-control" placeholder="Bulan" required="required">
+									    </div>
+									    <div class="col-sm-3">
+									      <input type="text" class="form-control" placeholder="Tahun" required="required">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputTempatLahir" class="col-sm-2 control-label">Tempat Lahir*</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputTempatLahir" placeholder="Tempat Lahir" required="required">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputALamatLengkap" class="col-sm-2 control-label">Alamat Lengkap</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputALamatLengkap" placeholder="ALamat Lengkap">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputTelp" class="col-sm-2 control-label">Telp/HP</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputTelp" placeholder="Telp">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+									    <div class="col-sm-10">
+									      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputFacebook" class="col-sm-2 control-label">Facebook</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputFacebook" placeholder="Facebook">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputPIN" class="col-sm-2 control-label">PIN BB</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputPIN" placeholder="PIN">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputLine" class="col-sm-2 control-label">Line/WhatsApp</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputLine" placeholder="Line">
+									    </div>
+									</div>
+
+									<div class="form-group">
+										<legend>Pendidikan Formal</legend>
+									</div>
+									<div class="form-group">
+									    <label for="inputSD" class="col-sm-2 control-label">SD*</label>
+									    <div class="col-sm-6">
+									      <input type="text" class="form-control" id="inputSD" placeholder="Nama SD" required="required">
+									    </div>
+									    <div class="col-sm-4">
+									      <input type="text" class="form-control" placeholder="Tahun">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputSMP" class="col-sm-2 control-label">SMP*</label>
+									    <div class="col-sm-6">
+									      <input type="text" class="form-control" id="inputSMP" placeholder="Nama SMP/MTS" required="required">
+									    </div>
+									    <div class="col-sm-4">
+									      <input type="text" class="form-control" placeholder="Tahun">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputSMA" class="col-sm-2 control-label">SMA/SMK/MA*</label>
+									    <div class="col-sm-6">
+									      <input type="text" class="form-control" id="inputSMA" placeholder="Nama SMA/SMK/MA" required="required">
+									    </div>
+									    <div class="col-sm-4">
+									      <input type="text" class="form-control" placeholder="Tahun">
+									    </div>
+									</div>
+
+									<div class="form-group">
+										<legend>DATA ORANG TUA / WALI</legend>
+									</div>
+
+									<div class="form-group">
+									    <label for="inputNamaAyah" class="col-sm-2 control-label">Nama Ayah</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputNamaAyah" placeholder="Nama Ayah">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputPekerjaan" class="col-sm-2 control-label">Pekerjaan Ayah</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputPekerjaan" placeholder="Pekerjaan Ayah">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputNamaIbu" class="col-sm-2 control-label">Nama Ibu</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputNamaIbu" placeholder="Nama Ibu">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputPekerjaanIbu" class="col-sm-2 control-label">Pekerjaan Ibu</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputPekerjaanIbu" placeholder="Pekerjaan Ibu">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputALamatLengkapOrangtua" class="col-sm-2 control-label">ALamat Lengkap</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputALamatLengkapOrangtua" placeholder="ALamat Lengkap">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputTelpOrtu" class="col-sm-2 control-label">No.Telp/HP</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" id="inputTelpOrtu" placeholder="Telp Orang tua">
+									    </div>
+									</div>
+
+									<div class="form-group">
+										<legend>JURUSAN YANG DI PILIH</legend>
+									</div>
+
+									<div class="form-group">
+									    <label for="inputJurusan" class="col-sm-2 control-label">Jurusan*</label>
+									    <div class="col-sm-4">
+									      <select name="jurusan" id="inputJurusan" class="form-control" required="required">
+									      	  <option value="11">S1 Manajemen</option>
+									          <option value="12">D3 Manajemen Perpajakan</option>
+									          <option value="13">S1 Akuntansi</option>
+									          <option value="21">S1 Teknik Informatika</option>
+									          <option value="22">D3 Teknik Informatika</option>
+									          <option value="23">D3 Manajemen Informatika</option>
+									          <option value="24">D3 Komputer Akuntansi</option>
+									          <option value="31">S1 Psikologi</option>
+									          <option value="41">D3 Sastra Inggris</option>
+									          <option value="42">S1 Sastra Jepang</option>
+									          <option value="51">D3 Teknik Industri</option>
+									      </select>
+									    </div>
+									</div>
+
+									<div class="form-group">
+									    <label for="inputKelas" class="col-sm-2 control-label">Kelas*</label>
+									    <div class="col-sm-3">
+									      <select name="Kelas" id="inputKelas" class="form-control" required="required">
+									      	  <option selected="selected" value="Kelas Pagi">Kelas Pagi</option>
+									            <option value="Kelas Sore">Kelas Sore</option>
+									            <option value="Karyawan">Karyawan</option>
+									      </select>
+									    </div>
+									</div>
+
+									<div class="form-group">
+									    <label for="inputKelas" class="col-sm-2 control-label">Captcha</label>
+									    <div class="col-sm-3">
+									      <img src="images/captcha.png" alt="">
+									    </div>
+									</div>
+									<hr>
+
+									<div class="form-group">
+										<div class="col-sm-12">
+											<p class="help-block">
+												Note : (*) Requried field
+											</p>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-10 col-sm-offset-2">
+											<button type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						<!-- /.page description -->
+
+							</div>
+						<!-- /.page description -->
+						</div>
+						<div class="col-md-4">
+							{include file="sidebar-post.html"}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page content -->
+	{/block}

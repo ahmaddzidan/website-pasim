@@ -1,0 +1,57 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<!-- Theme JS files -->
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/nestable/jquery.nestable.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/pages.js"></script>
+{/block}
+
+
+{block name=page_navigations}
+	{anchor("pages/add-pages", "<b><i class='icon-images2'></i></b>"|cat:lang('pages_add'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{/block}
+
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('pages_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+	<div class="row">
+		<div class="col-md-4">
+		<label for="#">Pages Order</label>
+			<div class="dd" id="nestable">
+            </div>
+		</div>
+		<div class="col-sm-4">
+        <form action="" class="form-horizontal">
+            <label for="#">JSON Result</label>
+            <textarea class="form-control" id="nestable-output"></textarea>
+        </form>
+        </div>
+        <div class="col-sm-4">
+        <label for="#">Server Result</label>
+        <div class="sortableResult"></div>
+        </div>
+	</div>
+	</div>
+
+
+	<!-- /basic datatable -->
+</div>
+<!-- /table -->
+{/block}

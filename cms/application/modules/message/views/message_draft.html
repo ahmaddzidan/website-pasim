@@ -1,0 +1,87 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<!-- Theme JS files -->
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/message.js"></script>
+{/block}
+
+
+{block name=page_navigations}
+	{anchor("message/create-message", "<b><i class='icon-envelop2'></i></b>"|cat:lang('message_create'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{/block}
+
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('message_draft_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+
+	</div>
+
+	<table class="table datatable-basic" id="message-list">
+		<thead>
+			<tr>
+				<th width="10px"><input type="checkbox" class="styled" id="check-all"></th>
+				<th>{lang('message_to')}</th>
+				<th>{lang('message_subject')}</th>
+				<th width="200px">{lang('message_status')}</th>
+				<th width="250px">{lang('message_submitted_by')}</th>
+				<th>{lang('message_date')}</th>
+				<th class="text-center">{lang('general_actions')}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if (count($msg_data))}
+			{foreach $msg_data as $item}
+			<tr {if $item->read eq '0'}class="danger"{/if}>
+				<td><input type="checkbox" name="message-id[]" class="styled" value="{$item->id}"></td>
+				<td><a href="#" class="text-default" data-popup="tooltip" title="{$item->email} <br> IP: {$item->ip}" data-html="true"><i class="icon-bubbles7"></i></a> &nbsp;<strong>{$item->name}</strong></td>
+				<td width="30%">{htmlspecialchars($item->subject)}</td>
+				<td>
+					<span class="label bg-grey-400">{lang('message_draft')}</span>
+				</td>
+				<td>{$item->sender}</td>
+				<td>{fdate($site_setting->dateformat, $item->created)}</td>
+				<td class="text-center">
+					<ul class="icons-list">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li>{anchor("message/send-message/`$item->id`","<i class='icon-paperplane'></i>"|cat:lang('general_send'))}</li>
+								<li>{anchor("message/edit-message/`$item->id`","<i class='icon-pencil5'></i>"|cat:lang('general_edit'))}</li>
+								<li class="divider"></li>
+								<li>{anchor("message/delete-message/`$item->id`","<i class='icon-bin'></i>"|cat:lang('general_delete')," data-trigger='delete'")}
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+			</tr>
+			{/foreach}
+		{/if}
+		</tbody>
+	</table>
+	<!-- /basic datatable -->
+
+
+</div>
+<!-- /table -->
+{/block}

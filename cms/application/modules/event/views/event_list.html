@@ -1,0 +1,94 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<!-- Theme JS files -->
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/event.js"></script>
+{/block}
+
+
+{block name=page_navigations}
+	{anchor("event/add-event", "<b><i class='icon-calendar'></i></b>"|cat:lang('event_add'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+{/block}
+
+
+{block name=main_content}
+<!-- Table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">{lang('event_heading')}</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+	<div class="panel-body">
+
+	</div>
+
+	<table class="table datatable-basic" id="event-list">
+		<thead>
+			<tr>
+				<th width="10px"><input type="checkbox" class="styled" id="check-all"></th>
+				<th>{lang('event_title')}</th>
+				<th>{lang('event_author')}</th>
+				<th>{lang('event_start')}</th>
+				<th>{lang('event_end')}</th>
+				<th>{lang('event_status')}</th>
+				<th>{lang('event_date')}</th>
+				<th class="text-center">{lang('general_actions')}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if (count($event))}
+			{foreach $event as $item}
+			<tr>
+				<td><input type="checkbox" name="event-id[]" class="styled" value="{$item->id}"></td>
+				<td width="30%">{anchor("event/edit-event/`$item->id`", htmlspecialchars($item->title))}</td>
+				<td><a href="#">{$item->author}</a></td>
+				<td>{fdate('j F, Y g:i A',$item->start_date)}</td>
+				<td>{fdate('j F, Y g:i A',$item->end_date)}</td>
+				<td>{(($item->status eq '1') ? '<span class="label label-success">active' : '<span class="label label-default">draft')}</span></td>
+				<td>{fdate($date_format, $item->created)}</td>
+				<td class="text-center">
+					<ul class="icons-list">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li>{anchor("event/edit-event/`$item->id`","<i class='icon-pencil7'></i>"|cat:lang('general_edit'))}</li>
+								<li>
+								{if $item->status eq '1'}
+									{anchor("event/publish-event/deactive/`$item->id`","<i class='icon-earth'></i>"|cat:lang('general_set_as_draft'))}
+								{else}
+									{anchor("event/publish-event/active/`$item->id`","<i class='icon-earth'></i>"|cat:lang('general_publish'))}
+								{/if}
+								</li>
+								<li class="divider"></li>
+								<li>{anchor("event/delete-event/`$item->id`","<i class='icon-bin'></i>"|cat:lang('general_delete')," data-trigger='delete'")}
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+			</tr>
+			{/foreach}
+		{/if}
+		</tbody>
+	</table>
+	<!-- /basic datatable -->
+
+
+</div>
+<!-- /table -->
+{/block}

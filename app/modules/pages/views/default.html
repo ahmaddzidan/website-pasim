@@ -1,0 +1,58 @@
+{* Extend our master template *}
+{extends file="layout.html"}
+
+{block name=meta}
+	<meta name="keywords" content="{$websetting->metakeyword}, {$page->title}">
+	<meta name="title" property="og:title" content="{$page->title} | {$websetting->title}"/>
+	<meta name="description" property="og:description" content="{$websetting->description}">
+	<meta name="image" property="og:image" content="{$file_path}setting/{$websetting->headerlogo}" />
+	<meta name="dc.title" content="{$page->title} | {$websetting->title}" />
+	<meta name="twitter:title" value="{$page->title} | {$websetting->title}"/>
+	<meta name="twitter:description" value="{$websetting->description}" />
+	<meta name="twitter:image" value="{$file_path}setting/{$websetting->headerlogo}" />
+{/block}
+
+{block name=page_content}
+
+<!-- page content -->
+	<div id="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-8">
+							<!-- breadcrumb -->
+							<ol class="breadcrumb">
+							  <li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+							  <li class="active">Kampus</li>
+							</ol>
+							<!-- /.breadcrumb -->
+							<!-- page description -->
+							<div class="page-description">
+								<h3>Kampus Universitas Nasional PASIM</h3>
+								<a href="{theme_url()}images/kampus-pasim.jpg" data-trigger='fancybox' class="pull-left" title="Kampus Universitas Nasional Pasim">
+									<figure>
+											<img src="{theme_url()}images/kampus-pasim.jpg" class="img-responsive img-thumbnail" alt="kampus pasim" width="100%">
+										<figcaption class="text-center">
+										Kampus 2, lokasi tenang di daerah Jl. Dakota, Gunung Batu, Ruangan Kelas, Laboratorium , Internet, bersebelahan dengan Mesjid
+										</figcaption>
+									</figure>
+								</a>
+
+								<p>
+
+								</p>
+							</div>
+						<!-- /.page description -->
+						</div>
+						<div class="col-md-4">
+							{include file="sidebar-post.html"}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page content -->
+	{/block}

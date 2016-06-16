@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta content="id" http-equiv="Content-Language">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{$websetting->title} &rsaquo; {$page->title}</title>
+	    <meta name="author" content="Ahmad Sanusi">
+	    <meta name="distribution" content="Global" />
+	    <meta name="robots" content="index, follow">
+		<meta name="copyright" content="Copyright {date('Y')} {$websetting->title}" />
+		<meta name="language" content="in,en" />
+		<meta name="rating" content="General" />
+		<meta name="robots" content="index,follow" />
+		<meta name="googlebot" content="index,follow" />
+		<meta name="revisit-after" content="1 days" />
+		<meta name="expires" content="never" />
+		<meta name="dc.creator.e-mail" content="asanusi007@gmail.com" />
+		<meta name="dc.creator.name" content="Ahmad Sanusi" />
+		<meta name="dc.creator.website" content="http://ahmad.ourdesk.info" />
+		<meta name="tgn.name" content="Pasim,Bandung" />
+		<meta name="tgn.nation" content="Indonesia" />
+		{block name=meta}{/block}
+		<meta name="twitter:card" value="summary_large_image"/>
+	    <meta name="twitter:creator" value="@ahmaddzidan"/>
+	    <meta name="twitter:url" value="{current_url()}"/>
+	    <meta name="twitter:domain" value="http://ahmad.ourdesk.info"/>
+	    <meta name="twitter:site" value="AhmadSanusi"/>
+
+
+		<link rel="apple-touch-icon" sizes="57x57" href="{theme_url()}images/favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="{theme_url()}images/favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="{theme_url()}images/favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="{theme_url()}images/favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="{theme_url()}images/favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="{theme_url()}images/favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="{theme_url()}images/favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="{theme_url()}images/favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="{theme_url()}images/favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="{theme_url()}images/favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="{theme_url()}images/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="{theme_url()}images/favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="{theme_url()}images/favicon/favicon-16x16.png">
+		<link rel="manifest" href="{theme_url()}images/favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="{theme_url()}images/favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+
+		<!-- Bootstrap CSS -->
+		{css('bootstrap.min.css')}
+		{css('font-awesome.min.css')}
+		{css('style.css')}
+
+		<!-- Owl Carousel Slider CSS -->
+		{css('owl-carousel/owl.carousel.css')}
+		{css('owl-carousel/owl.theme.css')}
+		{css('owl-carousel/owl.transitions.css')}
+
+		<!-- Fancybox CSS -->
+		{css('fancybox/source/jquery.fancybox.css')}
+
+
+		<!-- Calendar CSS -->
+		{css('calendar/clndr.css')}
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,700,300' rel='stylesheet' type='text/css'>
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	 <noscript>
+            <div class="noscript-overlay">
+                <div class="noscript-message">
+                    <p>Please enable your javascript !, this website cannot support without javascript.</p>
+                </div>
+            </div>
+        </noscript>
+	<div id="wrapper">
+	<!-- header -->
+	<div id="header">
+	<!-- top-bar -->
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-8">
+						<div class="info-box">
+							<span class="icon-info"><i class="fa fa-phone"></i></span>
+							<span class="info-label">Call Us :</span><span class="info-label-content">{$websetting->telephone}</span>
+						</div>
+						<div class="info-box">
+							<span class="icon-info"><i class="fa fa-envelope"></i></span>
+							<span class="info-label">Email :</span><span class="info-label-content">{$websetting->support_email}</span>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-4">
+						<div class="follow-us hidden-xs">
+							<span>Follow Us : </span>
+							<a href="{$websetting->twitter}" target="_blank"><i class="fa fa-twitter"></i></a>
+							<a href="{$websetting->facebook}" target="_blank"><i class="fa fa-facebook"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- /.top-bar -->
+
+	<!-- main-header -->
+	<div class="main-header">
+		<div class="container">
+			<div class="col-md-4 col-sm-6">
+				<div class="logo">
+					<img src="{$file_path}setting/{$websetting->headerlogo}" alt="">
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-6">
+				<div class="search-box">
+					<form action="#" id="form-search">
+					  <div class="input-group">
+					      <input type="text" class="form-control" placeholder="Pencarian Informasi Akademik">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+					      </span>
+					   </div><!-- /input-group -->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ./main-header -->
+
+	<!-- navigation -->
+	<div class="navigation">
+		<nav class="navbar navbar-default navbar-static-top mb-0" id="main-menu">
+			  <div class="container">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand visible-xs" href="#"><img src="{theme_url()}images/logo-simple.png" alt="" height="40" style="margin-top: -11px"></a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      {get_navigation($navigation)}
+			       <ul class="nav navbar-nav navbar-right">
+			        <li><a href="{site_url('pendaftaran-online')}">Pendaftaran <i class="fa fa-graduation-cap"></i></a></li>
+			     </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+	</div>
+	<!-- /.navigation -->
+	</div>
+	<!-- /#header -->
+
+	{block name=page_content}
+	{/block}
+
+	<!-- #footer -->
+	<footer id="main-footer" style="background:url({theme_url()}images/img-8.jpg) no-repeat 50% 0;">
+		<div class="container">
+	        <div id="blur-top">
+	            <a href="#" data-href="#wrapper" id="link-back-top">Back to Top</a>
+	        </div>
+	    </div>
+        <div id="slogan-footer">
+            <h4>Get Inspiration, Do With Motivation  <span>Create</span> Successfully</h4>
+        </div>
+        <div id="footer-content" class="clearfix">
+            <div id="footer-container">
+            <div class="container">
+            	<div class="row">
+				<div class="col-md-4">
+					<h4 class="footer-title">Quick Navigation</h4>
+					<ul class="footer-menu-list">
+						<li><a href="{site_url('/')}">Home</a></li>
+						<li><a href="{site_url('sejarah')}">Tentang Kami</a></li>
+						<li><a href="{site_url('fakultas')}">Fakultas</a></li>
+						<li><a href="{site_url('kampus')}">Kampus</a></li>
+						<li><a href="{site_url('kalender-akademik')}">Akademik</a></li>
+						<li><a href="{site_url('profile-lppm')}">LPPM</a></li>
+						<li><a href="{site_url('kontak')}">Kontak</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<h4 class="footer-title">Lokasi Kampus</h4>
+					<iframe class="map-area" src="http://maps.google.com/?ie=UTF8&amp;ll={$websetting->latitude},{$websetting->longitude}&amp;spn=0.006313, 0.01133&amp;t=m&amp;z={$websetting->radius}&amp;output=embed"></iframe>
+				</div>
+				<div class="col-md-4">
+					<article class="clearfix" id="footer-address">
+					    <h3 id="title-footer-address"><span>Hubungi Kami</span></h3>
+					    <p><strong>Anda dapat menghubungi kami melalui Telepon kami {$websetting->telephone}, atau Melalui Faximile  {$websetting->telephone} </strong></p>
+					    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo numquam, velit odio. Iste magni ratione eum quidem odio expedita dolore possimus fugiat explicabo voluptate inventore laudantium accusamus quo.</p>
+					    <ul class="clearfix" id="list-social">
+					        <li id="icon-facebook"><a href="#">&nbsp;</a></li>
+					        <li id="icon-twitter"><a href="#">&nbsp;</a></li>
+					        <li id="icon-gplus"><a href="#">&nbsp;</a></li>
+					        <li id="icon-linkedin"><a href="#">&nbsp;</a></li>
+					        <li id="icon-youtube"><a href="#">&nbsp;</a></li>
+					        <li class="last" id="icon-flickr"><a href="#">&nbsp;</a></li>
+					    </ul>
+					</article>
+				</div>
+				</div>
+	        </div>
+            </div>
+        </div>
+    <div class="footer-copyright-content">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4">
+    				<a href="#" id="logo-footer"><img src="{$file_path}setting/{$websetting->footerlogo}" data-retina="images/logo-footer-retina.png" alt="Universitas nasional pasim" /></a>
+    			</div>
+    			<div class="col-md-4">
+    				<p id="text-address"> {literal}<i class="fa fa-clock-o"></i> {elapsed_time} Seconds | <i class="fa fa-ticket"></i>&nbsp;{memory_usage}{/literal}</p>
+    				<!-- <p id="text-address">{$websetting->address}</p> -->
+    			</div>
+    			<div class="col-md-4">
+    				<p id="text-copyright">Copyright &copy; AHMAD SANUSI  2016. All rights reserved</p>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    </footer>
+	<!-- /#footer -->
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Load Script at the bottom -->
+	{js('jquery-1.12.1.min.js')}
+	{js('bootstrap.min.js')}
+
+	<!-- Owl Carousel -->
+	{js('owl-carousel/owl.carousel.min.js')}
+
+	<!-- Fancybox -->
+	{js('fancybox/source/jquery.fancybox.min.js')}
+
+	<!-- Calendar -->
+	{js('calendar/underscore-min.js')}
+	{js('calendar/moment.min.js')}
+	{js('calendar/clndr.min.js')}
+
+	<!-- Jquery initialize -->
+	{js('jquery.easing.min.js')}
+	{js('jquery.init.js')}
+
+	<!-- Page script -->
+	{block name=script_assets}
+	{/block}
+	</body>
+</html>

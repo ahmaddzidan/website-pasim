@@ -1,0 +1,122 @@
+{* Extend our master template *}
+{extends file="default/template.html"}
+
+{block name=specific_js}
+<!-- Theme JS files -->
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/ui/moment/moment.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/pickers/daterangepicker.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/uploaders/fileinput.min.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/plugins/pickers/color/spectrum.js"></script>
+<script type="text/javascript" src="{theme_url()}panel/assets/js/page/slider.js"></script>
+{/block}
+
+
+{block name=page_navigations}
+
+{anchor("slider/add-slider", "<b><i class='icon-images2'></i></b>"|cat:lang('slider_add'),"class='btn bg-teal-400 btn-labeled heading-btn'")}
+
+{/block}
+
+
+{block name=main_content}
+{form_open_multipart(uri_string(),'class="form-vertical"')}
+<div class="row">
+	<div class="col-md-9">
+		<div class="panel panel-flat">
+			<div class="panel-heading">
+				<h5 class="panel-title">{lang('slider_create_heading')}</h5>
+				<div class="heading-elements">
+					<ul class="icons-list">
+		        		<li><a data-action="collapse"></a></li>
+		        		<li><a data-action="close"></a></li>
+		        	</ul>
+		    	</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					{form_input($slider_title)}
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon bg-slate-700"><i class="icon-link"></i></span>
+						{form_input($url)}
+					</div>
+				</div>
+				<div class="form-group">
+					{form_textarea($caption)}
+				</div>
+
+				<div class="form-group">
+					{form_input($slider_images)}
+					<span class="help-block">{lang('slider_img_size')}</span>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-3">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h5 class="panel-title">{lang('general_publish')}</h5>
+				<div class="heading-elements">
+					<ul class="icons-list">
+		        		<li><a data-action="collapse"></a></li>
+		        		<li><a data-action="close"></a></li>
+		        	</ul>
+		    	</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label>{lang('slider_publish_placeholder')}</label>
+					<div class="input-group">
+						{form_input($publication_date)}
+						<span class="input-group-addon"><i class="icon-calendar22"></i></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>{lang('slider_set_as')}</label>
+					{form_dropdown($status, $status_option, $status_selected)}
+				</div>
+				<div class="form-group text-right">
+					{form_submit('submit', lang('general_save'),'class="btn btn-primary"')}
+					{anchor('slider/',lang('general_cancel'),'class="btn bg-teal"')}
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h5 class="panel-title">{lang('general_style')}</h5>
+				<div class="heading-elements">
+					<ul class="icons-list">
+		        		<li><a data-action="collapse"></a></li>
+		        		<li><a data-action="close"></a></li>
+		        	</ul>
+		    	</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group row">
+					<label class="control-label col-lg-7">{lang('slider_text_color')}</label>
+					<div class="col-lg-5">
+						{form_input($text_color)}
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-lg-7">{lang('slider_bg_color')}</label>
+					<div class="col-lg-5">
+						{form_input($bg_color)}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+{form_close()}
+{/block}

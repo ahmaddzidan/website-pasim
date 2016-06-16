@@ -1,0 +1,70 @@
+<div id="sidebar">
+	<div class="panel panel-primary content-item">
+		<div class="panel-heading">
+			<h3 class="panel-title">Quick Navigation</h3>
+		</div>
+		<div class="panel-body">
+			<ul class="quick-navigation">
+				<li><a href="{site_url('fakultas')}">Fakultas</a></li>
+				<li><a href="{site_url('kalender-akademik')}">Akademik</a></li>
+				<li><a href="{site_url('program-beasiswa')}">Program Beasiswa</a></li>
+				<li><a href="{site_url('foto-galeri')}">Galeri Foto</a></li>
+				<li><a href="{site_url('berita')}">Berita</a></li>
+				<li><a href="{site_url('informasi')}">Informasi</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="panel panel-primary content-item">
+		<div class="panel-heading">
+			<h3 class="panel-title">Berita Terbaru</h3>
+		</div>
+		<div class="panel-body">
+
+		{foreach from=$recent.berita key=id item=p}
+		<div class="media">
+			<div class="media-left">
+			    <a href="#">
+			      <img width="64" height="64" class="media-object" width="" src="{$file_path}/post/{$p->images}" alt="{$p->title}">
+			    </a>
+		  	</div>
+			<div class="media-body">
+				<h5 class="media-heading">{anchor("/post/read/`$p->id`/`$p->slug`", $p->title)}</h5>
+
+				<span class="text-date"><time datetime="{fdate('Y-m-d',$p->created)}">{cmsdate($p->created, 2)}</time></span>
+			</div>
+		</div>
+		<hr>
+		{/foreach}
+		{anchor("post/berita", Lainnya , "class='btn btn-more'")}
+		</div>
+	</div>
+
+
+	<div class="panel panel-primary content-item">
+		<div class="panel-heading">
+			<h3 class="panel-title">Info Kampus</h3>
+		</div>
+		<div class="panel-body">
+			{foreach from=$recent.informasi key=id item=i}
+			<div class="media">
+				<div class="media-left">
+				    <a href="#">
+				      <img width="64" height="64" class="media-object" width="" src="{$file_path}/post/{$i->images}" alt="{$i->title}">
+				    </a>
+			  	</div>
+				<div class="media-body">
+					<h5 class="media-heading">{anchor("/post/read/`$i->id`/`$i->slug`", $i->title)}</h5>
+
+					<span class="text-date"><time datetime="{fdate('Y-m-d',$i->created)}">{cmsdate($i->created, 2)}</time></span>
+				</div>
+			</div>
+			<hr>
+			{/foreach}
+			<div class="clearfix"></div>
+			{anchor("post/informasi", Lainnya , "class='btn btn-more'")}
+		</div>
+	</div>
+
+</div>
+<!-- /#sidebar -->
