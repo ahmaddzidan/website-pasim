@@ -35,7 +35,7 @@ class Frontend_Controller extends MY_Controller {
 
 		// Load page model
 		$this->load->model(array('pages/pages_m','setting/setting_m','post/post_m'));
-		$this->data['file_path'] = 'http://akademik.ahmad.co/themes/default/uploads/';
+		$this->data['file_path'] = base_url() . 'panel/themes/default/uploads/';
 
 		$this->data['navigation'] = $this->pages_m->_get_nested();
 
