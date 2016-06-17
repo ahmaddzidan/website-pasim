@@ -125,7 +125,7 @@
 							{if $id eq 0}
 								<div class="content-list">
 								<div class="headline">
-									<img src="{$file_path}/post/{$i->images}" class="img-thumbnail img-responsive pull-right" alt="" >
+									<img src="{$file_path}/post/{$i->images}" class="img-thumbnail img-responsive pull-right" alt="" width="300px">
 									<h4 class="title"><a href="informasi-detail.html">{anchor("/post/read/`$i->id`/`$i->slug`", $i->title)}</a></h4>
 									<span class="date">{cmsdate($i->created, 2)} </span>
 									<p>{$i->intro}</p>

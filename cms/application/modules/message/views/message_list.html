@@ -49,7 +49,7 @@
 			{foreach $msg_data as $item}
 			<tr {if $item->read eq '0'}class="danger"{/if}>
 				<td><input type="checkbox" name="message-id[]" class="styled" value="{$item->id}"></td>
-				<td><a href="#" class="text-default" data-popup="tooltip" title="{$item->email} <br> IP: {$item->ip}" data-html="true"><i class="icon-bubbles7"></i></a> &nbsp;<strong>{$item->name}</strong></td>
+				<td><a href='{site_url("message/detail/`$item->id`")}' class="text-default" data-popup="tooltip" title="{$item->email} <br> IP: {$item->ip}" data-html="true"><i class="icon-bubbles7"></i> &nbsp;<strong>{$item->name}</strong></a></td>
 				<td width="30%">{htmlspecialchars($item->subject)}</td>
 				<td>{(($item->reply eq '1') ? '<span class="label label-success">Replied' : '<span class="label bg-slate">Unreplied')}</span></td>
 				<td>{fdate($site_setting->dateformat, $item->created)}</td>

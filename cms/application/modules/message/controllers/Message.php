@@ -38,6 +38,8 @@ class Message extends MY_Controller {
 	{
 		$this->data['subtitle'] = $this->lang->line('message_heading');
 		$this->data['msg_data'] = $this->message_m->get($id);
+		$this->data['msg_reply'] = $this->message_m->get_by(array('type'=>'out','replyid'=> $id));
+
 		$this->parser->parse('message_detail',$this->data);
 	}
 
@@ -132,7 +134,7 @@ class Message extends MY_Controller {
 
 	    	$data  = $this->message_m->array_form_post(array('subject','name','website','email','company','mobile','body','type','read','reply','replyid','ip','ua','created','createdby'));
 
-			$this->message_m->save($data, $id);
+			$this->message_m->save($data);
 
 			$this->session->set_flashdata('message', '<p>'. $this->lang->line('setting_general_success_message') .'</p>');
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');

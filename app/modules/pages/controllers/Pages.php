@@ -86,12 +86,13 @@ class Pages extends Frontend_Controller {
 
 		$this->form_validation->set_rules($rules);
 
-		$userCaptcha = set_value('captcha');
+		$userCaptcha = $this->input->post('captcha');
 		$word        = $this->session->userdata('captchaWord');
 		$stat 	= strcmp(strtolower($userCaptcha),strtolower($word));
 
 		if ($this->form_validation->run($this) == TRUE && $stat == 0)
 		{
+
 			$this->session->unset_userdata('captchaWord');
 
 			$_POST['read']      = '0';
@@ -104,17 +105,17 @@ class Pages extends Frontend_Controller {
 
 			$data  = $this->message_m->array_form_post(array('subject','name','website','email','company','mobile','body','type','read','reply','replyid','ip','ua','created','createdby'));
 
-			// $this->message_m->save($data);
+			$this->message_m->save($data);
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success"> <b>Pesan berhasil dikirim! </b>, tunggu beberapa saat untuk mendaptkan balasan. terimakasih atas partisipasinya.</div>');
+			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 			redirect('kontak');
-		}
-
-		if ($stat !== 0)
-		{
+		}elseif ($this->form_validation->run($this) == TRUE && $stat !== 0) {
+			# code...
 			$this->session->set_flashdata('message', '<div class="alert alert-danger"> <b>Captcha Salah! </b>, Silahkan coba lagi.</div>');
 		}
+
 
 		$vals = array(
             'img_path' => './captcha/',
@@ -190,13 +191,13 @@ class Pages extends Frontend_Controller {
 			'id'    => 'captcha',
 			'type'  => 'text',
 			'title' => 'Captcha',
-			'pattern' => '^.{3,}$',
 			'required' => 'required',
 			'class' => 'form-control',
 			'placeholder'=> 'Captcha',
 			'value' => $this->form_validation->set_value('captcha', $message->captcha)
 		);
 
+		$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 	}
 
 	public function _location()
