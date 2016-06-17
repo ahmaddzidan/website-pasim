@@ -225,7 +225,7 @@ class MY_Parser extends CI_Parser {
 
         $attributes = array_merge($defaults, $attributes);
 
-        $return = '<script type="'.$attributes['type'].'" src="'.base_url($this->CI->config->item('smarty.theme_path').$this->get_theme()."/js/".$file).'"></script>';
+        $return = '<script type="'.$attributes['type'].'" src="'.base_url($this->CI->config->item('smarty.theme_path').$this->get_theme()."/js/".$file).'" defer></script>';
 
         return $return;
     }
