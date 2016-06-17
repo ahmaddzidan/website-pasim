@@ -202,10 +202,10 @@
 						</a>
 
 						<ul class="dropdown-menu width-200">
-							<li>{anchor('message/all','<i class="icon-envelop"></i>'|cat:lang('message_all'),'title="All Message"')}</li>
 							<li>{anchor('message/inbox','<i class="icon-drawer-in"></i>'|cat:lang('general_message_inbox'),'title="Inbox"')}</li>
 							<li>{anchor('message/sent','<i class="icon-drawer-out"></i>'|cat:lang('general_message_sent'),'title="Sent Message"')}</li>
 							<li>{anchor('message/draft','<i class="icon-pencil7"></i>'|cat:lang('general_message_draft'),'title="Draft Message"')}</li>
+							<li>{anchor('message/all','<i class="icon-envelop"></i>'|cat:lang('message_all'),'title="All Message"')}</li>
 						</ul>
 					</li>
 
@@ -225,7 +225,7 @@
 
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li>{anchor('dashboard','Dashboard')}</li>
-					<li class="active">Users</li>
+					<li class="active">{ucfirst($segment_1)}</li>
 				</ul>
 			</div>
 
