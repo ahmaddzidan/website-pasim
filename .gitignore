@@ -15,6 +15,7 @@ app/cache/
 app/third_party
 public/themes
 public/panel/themes
+public/captcha
 app/cache
 cms/application/cache
 cms/application/logs
