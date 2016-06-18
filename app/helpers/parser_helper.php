@@ -48,6 +48,16 @@ if ( ! function_exists('css') )
     }
 }
 
+if ( ! function_exists('css_minify') )
+{
+    function css_minify($file = array())
+    {
+        $CI =& get_instance();
+
+        echo $CI->parser->css_minify($file);
+    }
+}
+
 /**
  * JS
  *
@@ -64,6 +74,16 @@ if ( ! function_exists('js') )
         $CI =& get_instance();
 
         echo $CI->parser->js($file, $attributes);
+    }
+}
+
+if ( ! function_exists('js_minify') )
+{
+    function js_minify($file = array())
+    {
+        $CI =& get_instance();
+
+        echo $CI->parser->js_minify($file);
     }
 }
 

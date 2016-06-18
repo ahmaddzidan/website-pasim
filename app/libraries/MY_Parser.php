@@ -209,6 +209,14 @@ class MY_Parser extends CI_Parser {
         return $return;
     }
 
+    public function css_minify($file = array())
+    {
+        $this->CI->minify->css($file);
+
+        return $this->CI->minify->deploy_css(FALSE);
+    }
+
+
     /**
      * JS
      *
@@ -228,6 +236,13 @@ class MY_Parser extends CI_Parser {
         $return = '<script type="'.$attributes['type'].'" src="'.base_url($this->CI->config->item('smarty.theme_path').$this->get_theme()."/js/".$file).'" defer></script>';
 
         return $return;
+    }
+
+     public function js_minify($file = array())
+    {
+        $this->CI->minify->js($file);
+
+        return $this->CI->minify->deploy_js(FALSE);
     }
 
     /**

@@ -48,21 +48,8 @@
 		<meta name="theme-color" content="#ffffff">
 
 		<!-- Bootstrap CSS -->
-		{css('bootstrap.min.css')}
-		{css('font-awesome.min.css')}
-		{css('style.css')}
 
-		<!-- Owl Carousel Slider CSS -->
-		{css('owl-carousel/owl.carousel.css')}
-		{css('owl-carousel/owl.theme.css')}
-		{css('owl-carousel/owl.transitions.css')}
-
-		<!-- Fancybox CSS -->
-		{css('fancybox/source/jquery.fancybox.css')}
-
-
-		<!-- Calendar CSS -->
-		{css('calendar/clndr.css')}
+		{css_minify(array('bootstrap.min.css','font-awesome.min.css','style.css','owl-carousel/owl.carousel.css','owl-carousel/owl.theme.css','owl-carousel/owl.transitions.css','fancybox/source/jquery.fancybox.css','calendar/clndr.css'))}
 
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,700,300' rel='stylesheet' type='text/css'>
@@ -236,24 +223,7 @@
 	</div>
 	<!-- /#wrapper -->
 
-	<!-- Load Script at the bottom -->
-	{js('jquery-1.12.1.min.js')}
-	{js('bootstrap.min.js')}
-
-	<!-- Owl Carousel -->
-	{js('owl-carousel/owl.carousel.min.js')}
-
-	<!-- Fancybox -->
-	{js('fancybox/source/jquery.fancybox.min.js')}
-
-	<!-- Calendar -->
-	{js('calendar/underscore-min.js')}
-	{js('calendar/moment.min.js')}
-	{js('calendar/clndr.min.js')}
-
-	<!-- Jquery initialize -->
-	{js('jquery.easing.min.js')}
-	{js('jquery.init.js')}
+	{js_minify(array('jquery-1.12.1.min.js','bootstrap.min.js','owl-carousel/owl.carousel.min.js','fancybox/source/jquery.fancybox.min.js','calendar/underscore-min.js','calendar/moment.min.js','calendar/clndr.min.js','jquery.easing.min.js','jquery.init.js'))}
 
 	<!-- Page script -->
 	{block name=script_assets}
