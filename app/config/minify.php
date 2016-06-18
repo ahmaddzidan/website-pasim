@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 // output path where the compiled files will be stored
-$config['assets_dir'] = 'themes/default/';
+$config['assets_dir'] = 'themes/default/compiled';
 
 // where to look for css files
 $config['css_dir'] = 'themes/default/css';
