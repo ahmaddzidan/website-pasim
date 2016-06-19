@@ -25,7 +25,7 @@
 		<div class="media">
 			<div class="media-left">
 			    <a href="#">
-			      <img width="64" height="64" class="media-object" width="" src="{$file_path}/post/{$p->images}" alt="{$p->title}">
+			      {img_thumb("post/`$p->images`", ['width'=>64, 'height'=>64, 'alt'=>$p->title, 'class'=>'media-object img-thumbnail'])}
 			    </a>
 		  	</div>
 			<div class="media-body">
@@ -50,7 +50,7 @@
 			<div class="media">
 				<div class="media-left">
 				    <a href="#">
-				      <img width="64" height="64" class="media-object" width="" src="{$file_path}/post/{$i->images}" alt="{$i->title}">
+				      {img_thumb("post/`$i->images`", ['width'=>64, 'height'=>64, 'alt'=>$i->title, 'class'=>'media-object img-thumbnail'])}
 				    </a>
 			  	</div>
 				<div class="media-body">

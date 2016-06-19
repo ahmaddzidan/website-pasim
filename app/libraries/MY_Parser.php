@@ -267,6 +267,14 @@ class MY_Parser extends CI_Parser {
         return $return;
     }
 
+    public function img_thumb($file, $attributes = array()) {
+        $src                   = explode('/', $file);
+        $attributes['crop']    = TRUE;
+        $attributes['sharpen'] = TRUE;
+
+        return $this->CI->img->rimg( $src[0], $src[1], $attributes);
+    }
+
     /**
      * Theme URL
      *

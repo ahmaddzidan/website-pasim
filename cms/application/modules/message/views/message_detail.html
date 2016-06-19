@@ -35,7 +35,7 @@
 
 				<div class="media-body">
 					<div class="media-content">{$msg_data->body}</div>
-					<span class="media-annotation display-block mt-10">{time_elapsed($msg_data->created)}<a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+					<span class="media-annotation display-block mt-10">{time_elapsed($msg_data->created)}<a href="#" data-popup="tooltip" title="IP: {$msg_data->ip}" data-html="true"><i class="icon-pin-alt position-right text-muted"></i></a></span>
 				</div>
 			</li>
 			{foreach from=$msg_reply key=id item=mr}
@@ -54,7 +54,12 @@
 			{/foreach}
 		</ul>
 
-		<textarea name="enter-message" class="form-control content-group" rows="3" cols="1" placeholder="Enter your message..."></textarea>
+		{form_open("message/reply-message/`$msg_data->id`")}
+		<input type="hidden" name="name" value="{$msg_data->name}">
+		<input type="hidden" name="email" value="{$msg_data->email}">
+		<input type="hidden" name="subject" value="{$msg_data->subject}">
+
+		<textarea name="body" class="form-control content-group" rows="3" cols="1" placeholder="Enter your message..."></textarea>
 
 		<div class="row">
 			<div class="col-xs-6">
@@ -66,9 +71,11 @@
 			</div>
 
 			<div class="col-xs-6 text-right">
-	            <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>
+	            <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>
 			</div>
 		</div>
+		{form_close()}
+
 	</div>
 	</div>
 	<!-- /basic layout -->

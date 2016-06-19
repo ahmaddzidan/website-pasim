@@ -37,7 +37,7 @@
 								<div class="media">
 									<div class="media-left ml-15">
 									    <a href="#">
-									      <img width="150" height="150" class="media-object" width="" src="{$file_path}/post/{$p->images}" alt="{$p->title}">
+									       {img_thumb("post/`$p->images`", ['width'=>150, 'height'=>150, 'alt'=>$p->title, 'class'=>'media-object'])}
 									    </a>
 								  	</div>
 									<div class="media-body">

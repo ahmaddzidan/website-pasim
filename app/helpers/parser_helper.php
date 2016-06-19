@@ -106,6 +106,17 @@ if ( ! function_exists('image') )
     }
 }
 
+if ( ! function_exists('img_thumb') )
+{
+    function img_thumb($file, $attributes = array())
+    {
+        $CI =& get_instance();
+
+        echo $CI->parser->img_thumb($file, $attributes);
+    }
+}
+
+
 /**
  * Session
  *

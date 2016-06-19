@@ -88,7 +88,7 @@
 						{foreach from=$recent.berita key=id item=p}
 						{if $id eq 0}
 						<div class="headline">
-							<img src="{$file_path}/post/{$p->images}" class="img-thumbnail img-responsive pull-right" alt="" width="300px">
+							{img_thumb("post/`$p->images`", ['width'=>300, 'height'=>200, 'alt'=>$p->title, 'class'=>'img-thumbnail img-responsive pull-right'])}
 							<h4 class="title">{anchor("/post/read/`$p->id`/`$p->slug`", $p->title)}</h4>
 							<span class="date">{cmsdate($p->created, 2)}</span>
 							<p>{$p->intro}</p>
@@ -99,7 +99,9 @@
 
 							<div class="media">
 								<div class="media-left hidden-xs">
-									<a href='{site_url("/post/read/`$p->id`/`$p->slug`")}'><img width="125" height="94" alt="64x64" class="media-object img-thumbnail" src="{$file_path}/post/{$p->images}"></a>
+									<a href='{site_url("/post/read/`$p->id`/`$p->slug`")}'>
+									{img_thumb("post/`$p->images`", ['width'=>125, 'height'=>94, 'alt'=>$p->title, 'class'=>'media-object img-thumbnail'])}
+									</a>
 								</div>
 								<div class="media-body">
 									<h5 class="media-heading">{anchor("/post/read/`$p->id`/`$p->slug`", $p->title)}</h5>
@@ -125,7 +127,7 @@
 							{if $id eq 0}
 								<div class="content-list">
 								<div class="headline">
-									<img src="{$file_path}/post/{$i->images}" class="img-thumbnail img-responsive pull-right" alt="" width="300px">
+									{img_thumb("post/`$i->images`", ['width'=>300, 'height'=>200, 'alt'=>$p->title, 'class'=>'img-thumbnail img-responsive pull-right'])}
 									<h4 class="title"><a href="informasi-detail.html">{anchor("/post/read/`$i->id`/`$i->slug`", $i->title)}</a></h4>
 									<span class="date">{cmsdate($i->created, 2)} </span>
 									<p>{$i->intro}</p>
@@ -135,7 +137,9 @@
 							{else}
 								<div class="media">
 									<div class="media-left hidden-xs">
-										<a href='{site_url("/post/read/`$i->id`/`$i->slug`")}'><img width="125" height="94" alt="64x64" class="media-object img-thumbnail" src="{$file_path}/post/{$i->images}"></a>
+										<a href='{site_url("/post/read/`$i->id`/`$i->slug`")}'>
+										{img_thumb("post/`$i->images`", ['width'=>125, 'height'=>94, 'alt'=>$i->title, 'class'=>'media-object img-thumbnail'])}
+										</a>
 									</div>
 									<div class="media-body">
 										<h5 class="media-heading">{anchor("/post/read/`$i->id`/`$i->slug`", $i->title)}</h5>
