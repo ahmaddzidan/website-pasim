@@ -6,6 +6,4 @@ Project website PASIM ini dibuat untuk melatih kemampuan menggunakan framework C
 ## Requirements
 
 * PHP 5.3.2 or later
-* `composer` command (See [Composer Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx))
-* Git
 
